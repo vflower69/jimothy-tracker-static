@@ -89,6 +89,7 @@ document.getElementById("reloadJournal").onclick = loadJournal;
 // ------------------------------
 // SUBMIT SIGHTING
 // ------------------------------
+/*
 document.getElementById("sightingForm").addEventListener("submit", async (e) => {
   e.preventDefault();
 
@@ -123,6 +124,7 @@ document.getElementById("sightingForm").addEventListener("submit", async (e) => 
 
   alert("Sighting shared!");
 });
+*/
 
 // ------------------------------
 // UPDATE GITHUB FILE
