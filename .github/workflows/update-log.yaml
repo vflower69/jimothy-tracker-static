@@ -1,0 +1,60 @@
+name: Update Jimothy Log
+
+permissions:
+  contents: write
+
+on:
+  workflow_dispatch:
+    inputs:
+      payload:
+        description: "Full JSON payload (existing data)"
+        required: true
+        type: string
+      new_entry:
+        description: "New sighting entry (single object)"
+        required: true
+        type: string
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Sync with remote main BEFORE changes
+        shell: bash
+        run: |
+          git pull --rebase origin main
+
+      - name: Append new sighting to JSON
+        shell: bash
+        run: |
+          # Write payload safely
+          cat <<'EOF' > data/tmp.json
+${{ inputs.payload }}
+EOF
+
+          # Write new_entry safely
+          cat <<'EOF' > data/new_entry.json
+${{ inputs.new_entry }}
+EOF
+
+          # Validate JSON
+          jq '.' data/tmp.json > /dev/null
+          jq '.' data/new_entry.json > /dev/null
+
+          # Merge new entry into locations array
+          jq --slurpfile entry data/new_entry.json '.locations += $entry' data/tmp.json > data/jimothy.json
+
+          # Configure Git identity
+          git config user.name "Jimothy Tracker Bot"
+          git config user.email "actions@github.com"
+
+          # Commit and push
+          git add data/jimothy.json
+          git commit -m "Add new Jimothy sighting" || echo "No changes to commit"
+          git push -u origin main
