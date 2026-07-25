@@ -58,6 +58,9 @@ async function loadJournal() {
     const res = await fetch(`https://raw.githubusercontent.com/${GITHUB_USER}/${GITHUB_REPO}/main/${GITHUB_FILE_PATH}`);
     const data = await res.json();
 
+    // Draw markers on map
+    loadSightingsOnMap(data.locations);
+
     const list = document.getElementById("journalList");
     list.innerHTML = "";
 
@@ -199,4 +202,25 @@ async function submitFormSighting() {
   } catch (err) {
     alert("Network error: " + err.message);
   }
+}
+
+// ------------------------------
+// DRAW ALL SIGHTINGS
+// ------------------------------
+function loadSightingsOnMap(locations) {
+  locations.forEach((loc) => {
+    new google.maps.Marker({
+      position: { lat: loc.lat, lng: loc.lng },
+      map,
+      label: "J",
+      icon: {
+        path: google.maps.SymbolPath.CIRCLE,
+        scale: 10,
+        fillColor: "orange",
+        fillOpacity: 1,
+        strokeWeight: 1,
+        strokeColor: "#b85c00"
+      }
+    });
+  });
 }
