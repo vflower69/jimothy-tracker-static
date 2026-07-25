@@ -141,24 +141,57 @@ async function updateGitHubFile(newEntry, fullPayload) {
 }
 
 async function submitFormSighting() {
-  const lat = parseFloat(document.getElementById("latInput").value);
-  const lng = parseFloat(document.getElementById("lngInput").value);
-  const timestamp = document.getElementById("timeInput").value || new Date().toISOString();
-  const note = document.getElementById("noteInput").value;
+  // Read comma-separated location input
+  const loc = document.getElementById("locationInput").value.trim();
+  const note = document.getElementById("noteInput").value.trim();
 
-  const payload = { lat, lng, timestamp, note };
+  if (!loc) {
+    alert("Please click the map or enter a location.");
+    return;
+  }
 
-  const res = await fetch("https://api.jimothytracker.org", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(payload)
-  });
+  // Parse "lat, lng"
+  const parts = loc.split(",");
+  if (parts.length !== 2) {
+    alert("Location must be in 'lat, lng' format.");
+    return;
+  }
 
-  const data = await res.json();
+  const lat = parseFloat(parts[0]);
+  const lng = parseFloat(parts[1]);
 
-  if (data.success) {
-    alert("Jimothy sighting submitted");
-  } else {
-    alert("Error submitting sighting: " + data.error);
+  if (isNaN(lat) || isNaN(lng)) {
+    alert("Latitude and longitude must be valid numbers.");
+    return;
+  }
+
+  // Timestamp
+  const timestamp = new Date().toISOString();
+
+  // Build payload for Cloudflare Worker
+  const payload = {
+    lat,
+    lng,
+    timestamp,
+    note
+  };
+
+  try {
+    const res = await fetch("https://<your-worker>.workers.dev", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(payload)
+    });
+
+    const data = await res.json();
+
+    if (data.success) {
+      alert("Jimothy sighting submitted successfully.");
+      document.getElementById("noteInput").value = "";
+    } else {
+      alert("Error submitting sighting: " + data.error);
+    }
+  } catch (err) {
+    alert("Network error: " + err.message);
   }
 }
