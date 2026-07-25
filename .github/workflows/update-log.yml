@@ -23,9 +23,9 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0  # so git pull/rebase has full history
+          fetch-depth: 0  # full history so pull/rebase works
 
-      - name: Sync with remote main
+      - name: Sync with remote main BEFORE changes
         shell: bash
         run: |
           git pull --rebase origin main
@@ -47,7 +47,10 @@ jobs:
           git config user.name "Jimothy Tracker Bot"
           git config user.email "actions@github.com"
 
-          # Commit and push
+          # Stage and commit
           git add data/jimothy.json
           git commit -m "Add new Jimothy sighting" || echo "No changes to commit"
+
+          # Push to main
           git push origin main
+
