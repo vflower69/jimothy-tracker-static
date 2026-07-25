@@ -122,35 +122,21 @@ document.getElementById("sightingForm").addEventListener("submit", async (e) => 
 // ------------------------------
 // UPDATE GITHUB FILE
 // ------------------------------
-async function updateGitHubFile(newEntry) {
-  // Get existing file + SHA
-  const metaRes = await fetch(
-    `https://api.github.com/repos/${GITHUB_USER}/${GITHUB_REPO}/contents/${GITHUB_FILE_PATH}`,
-    {
-      headers: { Authorization: `Bearer ${GITHUB_TOKEN}` },
-    }
-  );
-  const meta = await metaRes.json();
-
-  const content = JSON.parse(atob(meta.content));
-  content.locations.push(newEntry);
-
-  const updatedContent = btoa(JSON.stringify(content, null, 2));
-
-  // PUT update
+async function updateGitHubFile(newEntry, fullPayload) {
   await fetch(`https://api.github.com/repos/${GITHUB_USER}/${GITHUB_REPO}/dispatches`, {
     method: "POST",
     headers: {
-      Authorization: `Bearer ${GITHUB_TOKEN_JIMOTHY}`, // this is GitHub’s built‑in token, not exposed
+      Authorization: `Bearer ${GITHUB_TOKEN_JIMOTHY}`, // GitHub injects this securely
       "Content-Type": "application/json",
+      Accept: "application/vnd.github.everest-preview+json"
     },
     body: JSON.stringify({
       event_type: "update-log",
       client_payload: {
         new_entry: newEntry,
-        payload: content,
-      },
-    }),
+        payload: fullPayload
+      }
+    })
   });
-
 }
+
