@@ -38,5 +38,9 @@ jobs:
           git config user.email "actions@github.com"
           git add data/jimothy.json
           git commit -m "Add new Jimothy sighting"
-          git pull --rebase origin main
-          git push
+          # Pull remote changes safely before pushing
+          git fetch origin main
+          git rebase origin/main
+
+          # Push with automatic retry if rebase succeeds
+          git push origin main
