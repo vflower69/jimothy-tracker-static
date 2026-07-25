@@ -40,7 +40,6 @@ jobs:
           git commit -m "Add new Jimothy sighting"
           # Pull remote changes safely before pushing
           git fetch origin main
-          git rebase origin/main
-
+          git rebase origin/main || git pull --rebase origin main
           # Push with automatic retry if rebase succeeds
           git push origin main
