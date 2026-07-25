@@ -204,9 +204,9 @@ async function submitFormSighting() {
   }
 }
 
-// ------------------------------
-// DRAW ALL SIGHTINGS
-// ------------------------------
+// ---------------------------------------------------
+// DRAW ALL SIGHTINGS ON MAP WITH 'J' IN ORANGE CIRCLE
+// ---------------------------------------------------
 function loadSightingsOnMap(locations) {
   locations.forEach((loc) => {
     new google.maps.Marker({
