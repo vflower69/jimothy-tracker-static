@@ -126,7 +126,7 @@ async function updateGitHubFile(newEntry, fullPayload) {
   await fetch(`https://api.github.com/repos/${GITHUB_USER}/${GITHUB_REPO}/dispatches`, {
     method: "POST",
     headers: {
-      Authorization: `Bearer ${JIMOTHY_TRACKER_STATIC}`, // GitHub injects this securely
+      Authorization: `Bearer ${GITHUB_TOKEN_JIMOTHY}`,
       "Content-Type": "application/json",
       Accept: "application/vnd.github.everest-preview+json"
     },
@@ -134,9 +134,8 @@ async function updateGitHubFile(newEntry, fullPayload) {
       event_type: "update-log",
       client_payload: {
         new_entry: newEntry,
-        payload: fullPayload
+        payload: content
       }
     })
   });
 }
-
