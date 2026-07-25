@@ -33,15 +33,11 @@ jobs:
       - name: Append new sighting to JSON
         shell: bash
         run: |
-          # Write payload safely
-          cat <<'EOF' > data/tmp.json
-${{ inputs.payload }}
-EOF
+          # Write payload safely (no heredoc)
+          printf "%s" "${{ inputs.payload }}" > data/tmp.json
 
-          # Write new_entry safely
-          cat <<'EOF' > data/new_entry.json
-${{ inputs.new_entry }}
-EOF
+          # Write new entry safely (no heredoc)
+          printf "%s" "${{ inputs.new_entry }}" > data/new_entry.json
 
           # Validate JSON
           jq '.' data/tmp.json > /dev/null
