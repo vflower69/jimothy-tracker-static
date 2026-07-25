@@ -1,3 +1,22 @@
 {
-  "locations": []
+  "locations": [
+    {
+      "lat": 47.601,
+      "lng": -122.331,
+      "timestamp": "2026-07-21T18:00:00Z",
+      "note": "Jimothy near the waterfront"
+    },
+    {
+      "lat": 47.615,
+      "lng": -122.345,
+      "timestamp": "2026-07-23T03:12:00Z",
+      "note": "Jimothy spotted behind Key Arena"
+    },
+    {
+      "lat": 47.618,
+      "lng": -122.348,
+      "timestamp": "2026-07-24T19:45:00Z",
+      "note": "Jimothy crossing 5th Ave"
+    }
+  ]
 }
