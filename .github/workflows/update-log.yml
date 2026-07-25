@@ -30,27 +30,33 @@ jobs:
         run: |
           git pull --rebase origin main
 
-      - name: Append new sighting to JSON
+      -      - name: Append new sighting to JSON
         shell: bash
         run: |
-          # Validate and write payload
-          echo "${{ inputs.payload }}" | jq '.' > data/tmp.json
+          # Write payload safely
+          cat <<'EOF' > data/tmp.json
+            ${{ inputs.payload }}
+            EOF
 
-          # Validate and write new_entry
-          echo "${{ inputs.new_entry }}" | jq '.' > data/new_entry.json
+          # Write new_entry safely
+          cat <<'EOF' > data/new_entry.json
+            ${{ inputs.new_entry }}
+            EOF
+
+          # Validate JSON
+          jq '.' data/tmp.json > /dev/null
+          jq '.' data/new_entry.json > /dev/null
 
           # Merge new entry into locations array
-          jq --slurpfile entry data/new_entry.json \
-             '.locations += $entry' data/tmp.json > data/jimothy.json
+          jq --slurpfile entry data/new_entry.json '.locations += $entry' data/tmp.json > data/jimothy.json
 
           # Configure Git identity
           git config user.name "Jimothy Tracker Bot"
           git config user.email "actions@github.com"
 
-          # Stage and commit
+          # Commit and push
           git add data/jimothy.json
           git commit -m "Add new Jimothy sighting" || echo "No changes to commit"
-
-          # Push to main
           git push origin main
+
 
