@@ -52,5 +52,5 @@ jobs:
           git commit -m "Add new Jimothy sighting" || echo "No changes to commit"
 
           # Push to main
-          git push origin main
+          #git push origin main
 
