@@ -147,13 +147,87 @@ async function updateGitHubFile(newEntry, fullPayload) {
   });
 }
 
-// ------------------------------
-// SUBMIT JIMOTHY LOCATION
-// ------------------------------
+// -------------------------------------------
+// SUBMIT JIMOTHY LOCATION (Cloudflare worker)
+// -------------------------------------------
+/* ***********CLOUDFLARE WORKER***************
+export default {
+  async fetch(request, env) {
+    // ------------------------------
+    // CORS HEADERS
+    // ------------------------------
+    const corsHeaders = {
+      "Access-Control-Allow-Origin": "https://jimothytracker.org",
+      "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
+      "Access-Control-Allow-Headers": "Content-Type, Authorization"
+    };
+
+    // Handle preflight OPTIONS request
+    if (request.method === "OPTIONS") {
+      return new Response(null, { headers: corsHeaders });
+    }
+
+    // Only allow POST
+    if (request.method !== "POST") {
+      return new Response("Only POST allowed", {
+        status: 405,
+        headers: corsHeaders
+      });
+    }
+
+    // ------------------------------
+    // PARSE REQUEST BODY
+    // ------------------------------
+    const body = await request.json();
+    const dispatch = {
+      event_type: "jimothy_sighting",
+      client_payload: body
+    };
+
+    // ------------------------------
+    // TRIGGER GITHUB ACTION
+    // ------------------------------
+    const res = await fetch(
+      `https://api.github.com/repos/${env.GH_OWNER}/${env.GH_REPO}/dispatches`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": `Bearer ${env.GH_TOKEN}`,
+          "Accept": "application/vnd.github+json"
+        },
+        body: JSON.stringify(dispatch)
+      }
+    );
+
+    if (!res.ok) {
+      const text = await res.text();
+      return new Response("GitHub error: " + text, {
+        status: 500,
+        headers: corsHeaders
+      });
+    }
+
+    // ------------------------------
+    // SUCCESS RESPONSE
+    // ------------------------------
+    return new Response(JSON.stringify({ success: true }), {
+      status: 200,
+      headers: {
+        "Content-Type": "application/json",
+        ...corsHeaders
+      }
+    });
+  }
+};
+***********CLOUDFLARE WORKER*************** */
 async function submitFormSighting() {
+  event.preventDefault();
+  
   // Read comma-separated location input
   const loc = document.getElementById("locationInput").value.trim();
   const note = document.getElementById("noteInput").value.trim();
+  const time = document.getElementById("timeInput").value;
 
   if (!loc) {
     alert("Please click the map or enter a location.");
@@ -198,6 +272,7 @@ async function submitFormSighting() {
     if (data.success) {
       alert("Jimothy sighting submitted successfully.");
       document.getElementById("noteInput").value = "";
+      loadJournal();
     } else {
       alert("Error submitting sighting: " + data.error);
     }
