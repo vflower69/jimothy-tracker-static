@@ -23,25 +23,25 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0  # full history so pull/rebase works
+          fetch-depth: 0
 
       - name: Sync with remote main BEFORE changes
         shell: bash
         run: |
           git pull --rebase origin main
 
-      -      - name: Append new sighting to JSON
+      - name: Append new sighting to JSON
         shell: bash
         run: |
           # Write payload safely
           cat <<'EOF' > data/tmp.json
-            ${{ inputs.payload }}
-            EOF
+${{ inputs.payload }}
+EOF
 
           # Write new_entry safely
           cat <<'EOF' > data/new_entry.json
-            ${{ inputs.new_entry }}
-            EOF
+${{ inputs.new_entry }}
+EOF
 
           # Validate JSON
           jq '.' data/tmp.json > /dev/null
@@ -57,5 +57,4 @@ jobs:
           # Commit and push
           git add data/jimothy.json
           git commit -m "Add new Jimothy sighting" || echo "No changes to commit"
-          #git push origin main
-          git push -u origin
+          git push -u origin main
