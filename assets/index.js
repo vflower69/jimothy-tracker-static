@@ -140,6 +140,9 @@ async function updateGitHubFile(newEntry, fullPayload) {
   });
 }
 
+// ------------------------------
+// SUBMIT JIMOTHY LOCATION
+// ------------------------------
 async function submitFormSighting() {
   // Read comma-separated location input
   const loc = document.getElementById("locationInput").value.trim();
@@ -177,7 +180,7 @@ async function submitFormSighting() {
   };
 
   try {
-    const res = await fetch("https://<your-worker>.workers.dev", {
+    const res = await fetch("https://api.jimothytracker.org", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(payload)
