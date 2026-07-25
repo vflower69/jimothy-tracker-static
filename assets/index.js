@@ -11,9 +11,11 @@ let marker;
 // ------------------------------
 // GOOGLE MAP INIT
 // ------------------------------
+
+//Center the map at the South Entrance of the Seattle Ballard Locks when refresh browser with view of its neighborhood + nearby areas
 window.initMap = function () {
   map = new google.maps.Map(document.getElementById("map"), {
-    center: { lat: 47.6062, lng: -122.3321 },
+    center: { lat: 47.66498, lng: -122.39688 },
     zoom: 12,
   });
 
