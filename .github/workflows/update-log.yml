@@ -22,8 +22,8 @@ jobs:
 
       - name: Append new sighting to JSON
         run: |
-          echo "${{ inputs.payload }}" > data/tmp.json
-          jq --argjson entry "${{ inputs.new_entry }}" \
+          echo '${{ inputs.payload }}' > data/tmp.json
+          jq --argjson entry '${{ inputs.new_entry }}' \
              '.locations += [$entry]' data/tmp.json > data/jimothy.json
           git config user.name "Jimothy Tracker Bot"
           git config user.email "actions@github.com"
