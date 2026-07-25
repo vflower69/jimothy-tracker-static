@@ -1,10 +1,9 @@
 // ------------------------------
 // CONFIG
 // ------------------------------
-const GITHUB_USER = "YOUR_USERNAME";
-const GITHUB_REPO = "YOUR_REPO";
+const GITHUB_USER = "vflower69";
+const GITHUB_REPO = "jimothy-tracker-static";
 const GITHUB_FILE_PATH = "data/jimothy.json";
-const GITHUB_TOKEN = "YOUR_GITHUB_PAT"; // repo:contents write
 
 let map;
 let marker;
@@ -139,19 +138,19 @@ async function updateGitHubFile(newEntry) {
   const updatedContent = btoa(JSON.stringify(content, null, 2));
 
   // PUT update
-  await fetch(
-    `https://api.github.com/repos/${GITHUB_USER}/${GITHUB_REPO}/contents/${GITHUB_FILE_PATH}`,
-    {
-      method: "PUT",
-      headers: {
-        Authorization: `Bearer ${GITHUB_TOKEN}`,
-        "Content-Type": "application/json",
+  await fetch(`https://api.github.com/repos/${GITHUB_USER}/${GITHUB_REPO}/dispatches`, {
+    method: "POST",
+    headers: {
+      Authorization: `Bearer ${GITHUB_TOKEN_JIMOTHY}`, // this is GitHub’s built‑in token, not exposed
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      event_type: "update-log",
+      client_payload: {
+        new_entry: newEntry,
+        payload: content,
       },
-      body: JSON.stringify({
-        message: "Add Jimothy sighting",
-        content: updatedContent,
-        sha: meta.sha,
-      }),
-    }
-  );
+    }),
+  });
+
 }
