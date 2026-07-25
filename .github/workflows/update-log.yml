@@ -1,24 +1,23 @@
 name: Update Jimothy Log
+
 on:
-  workflow_dispatch:
   repository_dispatch:
     types: [update-log]
 
 jobs:
   update:
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4
 
       - name: Update JSON log
         run: |
-          echo "$PAYLOAD" | jq '.locations += [$NEW_ENTRY]' > data/jimothy.json
+          echo "${{ github.event.client_payload.payload }}" | jq --argjson entry "${{ github.event.client_payload.new_entry }}" '.locations += [$entry]' > data/jimothy.json
           git config user.name "Jimothy Tracker Bot"
           git config user.email "actions@github.com"
           git add data/jimothy.json
           git commit -m "Add new Jimothy sighting"
           git push
-        env:
-          PAYLOAD: ${{ github.event.client_payload.payload }}
-          NEW_ENTRY: ${{ github.event.client_payload.new_entry }}
+
