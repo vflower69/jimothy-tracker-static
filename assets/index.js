@@ -139,3 +139,26 @@ async function updateGitHubFile(newEntry, fullPayload) {
     })
   });
 }
+
+async function submitFormSighting() {
+  const lat = parseFloat(document.getElementById("latInput").value);
+  const lng = parseFloat(document.getElementById("lngInput").value);
+  const timestamp = document.getElementById("timeInput").value || new Date().toISOString();
+  const note = document.getElementById("noteInput").value;
+
+  const payload = { lat, lng, timestamp, note };
+
+  const res = await fetch("https://api.jimothytracker.org", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(payload)
+  });
+
+  const data = await res.json();
+
+  if (data.success) {
+    alert("Jimothy sighting submitted");
+  } else {
+    alert("Error submitting sighting: " + data.error);
+  }
+}
