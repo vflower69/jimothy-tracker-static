@@ -2,7 +2,7 @@ name: Update Jimothy Log
 
 permissions:
   contents: write
-  
+
 on:
   workflow_dispatch:
     inputs:
@@ -22,24 +22,32 @@ jobs:
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # so git pull/rebase has full history
+
+      - name: Sync with remote main
+        shell: bash
+        run: |
+          git pull --rebase origin main
 
       - name: Append new sighting to JSON
         shell: bash
         run: |
-          # Write each input to its own file
-          echo '${{ inputs.payload }}' | jq '.' > data/tmp.json
-          echo '${{ inputs.new_entry }}' | jq '.' > data/new_entry.json
+          # Validate and write payload
+          echo "${{ inputs.payload }}" | jq '.' > data/tmp.json
+
+          # Validate and write new_entry
+          echo "${{ inputs.new_entry }}" | jq '.' > data/new_entry.json
 
           # Merge new entry into locations array
-          jq --slurpfile entry data/new_entry.json '.locations += $entry' data/tmp.json > data/jimothy.json
+          jq --slurpfile entry data/new_entry.json \
+             '.locations += $entry' data/tmp.json > data/jimothy.json
 
-          # Commit and push
+          # Configure Git identity
           git config user.name "Jimothy Tracker Bot"
           git config user.email "actions@github.com"
+
+          # Commit and push
           git add data/jimothy.json
-          git commit -m "Add new Jimothy sighting"
-          # Pull remote changes safely before pushing
-          git fetch origin main
-          git rebase origin/main || git pull --rebase origin main
-          # Push with automatic retry if rebase succeeds
+          git commit -m "Add new Jimothy sighting" || echo "No changes to commit"
           git push origin main
