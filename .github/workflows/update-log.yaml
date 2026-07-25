@@ -34,10 +34,10 @@ jobs:
         shell: bash
         run: |
           # Write payload safely (no heredoc)
-          printf "%s" "${{ inputs.payload }}" > data/tmp.json
+          printf '%s' '${{ inputs.payload }}' > data/tmp.json
 
           # Write new entry safely (no heredoc)
-          printf "%s" "${{ inputs.new_entry }}" > data/new_entry.json
+          printf '%s' '${{ inputs.new_entry }}' > data/new_entry.json
 
           # Validate JSON
           jq '.' data/tmp.json > /dev/null
