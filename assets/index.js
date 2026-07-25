@@ -126,7 +126,7 @@ async function updateGitHubFile(newEntry, fullPayload) {
   await fetch(`https://api.github.com/repos/${GITHUB_USER}/${GITHUB_REPO}/dispatches`, {
     method: "POST",
     headers: {
-      Authorization: `Bearer ${GITHUB_TOKEN_JIMOTHY}`, // GitHub injects this securely
+      Authorization: `Bearer ${JIMOTHY_TRACKER_STATIC}`, // GitHub injects this securely
       "Content-Type": "application/json",
       Accept: "application/vnd.github.everest-preview+json"
     },
