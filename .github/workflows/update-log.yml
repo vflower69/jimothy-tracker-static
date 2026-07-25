@@ -23,9 +23,9 @@ jobs:
       - name: Append new sighting to JSON
         shell: bash
         run: |
-          # Write inputs to files safely
-          echo "${{ inputs.payload }}" | jq '.' > data/tmp.json
-          echo "${{ inputs.new_entry }}" | jq '.' > data/new_entry.json
+          # Write each input to its own file
+          echo '${{ inputs.payload }}' | jq '.' > data/tmp.json
+          echo '${{ inputs.new_entry }}' | jq '.' > data/new_entry.json
 
           # Merge new entry into locations array
           jq --slurpfile entry data/new_entry.json '.locations += $entry' data/tmp.json > data/jimothy.json
