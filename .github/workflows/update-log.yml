@@ -1,8 +1,16 @@
 name: Update Jimothy Log
 
 on:
-  repository_dispatch:
-    types: [update-log]
+  workflow_dispatch:
+    inputs:
+      payload:
+        description: "Full JSON payload"
+        required: true
+        type: string
+      new_entry:
+        description: "New sighting entry"
+        required: true
+        type: string
 
 jobs:
   update:
@@ -14,12 +22,11 @@ jobs:
 
       - name: Append new sighting to JSON
         run: |
-          echo "${{ github.event.client_payload.payload }}" > data/tmp.json
-          jq --argjson entry "${{ github.event.client_payload.new_entry }}" \
+          echo "${{ inputs.payload }}" > data/tmp.json
+          jq --argjson entry "${{ inputs.new_entry }}" \
              '.locations += [$entry]' data/tmp.json > data/jimothy.json
           git config user.name "Jimothy Tracker Bot"
           git config user.email "actions@github.com"
           git add data/jimothy.json
           git commit -m "Add new Jimothy sighting"
           git push
-
