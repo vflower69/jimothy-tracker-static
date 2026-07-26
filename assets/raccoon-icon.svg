@@ -1,5 +1,56 @@
-<svg width="64" height="64" viewBox="0 0 64 64" fill="none"
+<svg width="96" height="96" viewBox="0 0 96 96" fill="none"
      xmlns="http://www.w3.org/2000/svg">
-  <path d="M32 6c-7.5 0-14 4.5-17 11-4 1-7 4-7 8 0 3 2 6 5 7-1 2-1 4-1 6 0 9 9 17 20 17s20-8 20-17c0-2 0-4-1-6 3-1 5-4 5-7 0-4-3-7-7-8-3-6.5-9.5-11-17-11zm-11 20c-2.2 0-4-1.8-4-4s1.8-4 4-4 4 1.8 4 4-1.8 4-4 4zm22 0c-2.2 0-4-1.8-4-4s1.8-4 4-4 4 1.8 4 4-1.8 4-4 4zm-11 18c-5 0-9-3-9-6 0-1 .5-2 1.5-2.5 3 1.5 6.5 1.5 9.5 0 1 .5 1.5 1.5 1.5 2.5 0 3-4 6-9 6z"
-        fill="#34322d"/>
+  <!-- Body (short spine, compact torso) -->
+  <ellipse cx="48" cy="52" rx="18" ry="14" fill="#F3E9D8" stroke="#34322d" stroke-width="2"/>
+
+  <!-- Head (big chibi head) -->
+  <circle cx="48" cy="32" r="16" fill="#F3E9D8" stroke="#34322d" stroke-width="2"/>
+
+  <!-- Face mask -->
+  <path d="M36 30
+           C38 26, 42 24, 48 24
+           C54 24, 58 26, 60 30
+           C58 34, 54 36, 48 36
+           C42 36, 38 34, 36 30Z"
+        fill="#8A7A64"/>
+
+  <!-- Eyes -->
+  <circle cx="42" cy="30" r="3" fill="#34322d"/>
+  <circle cx="54" cy="30" r="3" fill="#34322d"/>
+  <!-- Eye highlights -->
+  <circle cx="41.2" cy="29.2" r="1" fill="#FFFFFF"/>
+  <circle cx="53.2" cy="29.2" r="1" fill="#FFFFFF"/>
+
+  <!-- Nose -->
+  <circle cx="48" cy="33.5" r="2" fill="#34322d"/>
+
+  <!-- Mouth -->
+  <path d="M44 36
+           C46 38, 50 38, 52 36"
+        stroke="#34322d" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+
+  <!-- Ears -->
+  <path d="M38 20
+           C36 18, 34 18, 33 20
+           C34 22, 36 23, 38 22Z"
+        fill="#F3E9D8" stroke="#34322d" stroke-width="2"/>
+  <path d="M58 20
+           C60 18, 62 18, 63 20
+           C62 22, 60 23, 58 22Z"
+        fill="#F3E9D8" stroke="#34322d" stroke-width="2"/>
+
+  <!-- Long legs (no tail) -->
+  <!-- Left leg -->
+  <rect x="40" y="58" width="5" height="16" rx="2.5"
+        fill="#F3E9D8" stroke="#34322d" stroke-width="2"/>
+  <!-- Right leg -->
+  <rect x="51" y="58" width="5" height="16" rx="2.5"
+        fill="#F3E9D8" stroke="#34322d" stroke-width="2"/>
+
+  <!-- Feet -->
+  <ellipse cx="42.5" cy="75" rx="4" ry="2.2" fill="#34322d"/>
+  <ellipse cx="53.5" cy="75" rx="4" ry="2.2" fill="#34322d"/>
+
+  <!-- Subtle shadow under feet -->
+  <ellipse cx="48" cy="80" rx="14" ry="3" fill="#D9D4C8" opacity="0.6"/>
 </svg>
