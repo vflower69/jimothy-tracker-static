@@ -36,8 +36,14 @@ jobs:
         shell: bash
         env:
           PAYLOAD: ${{ inputs.payload }}
-          NEW_ENTRY: ${{ inputs.new_entry }}
+          # NEW_ENTRY: ${{ inputs.new_entry }}
+          NEW_ENTRY: ${{ toJson(github.event.client_payload) }}
         run: |
+          # Ensure file exists
+          if [ ! -f data/jimothy.json ]; then
+            echo '{"locations":[]}' > data/jimothy.json
+          fi
+          
           # Write payload safely
           echo "$PAYLOAD" > data/tmp.json
 
@@ -47,9 +53,12 @@ jobs:
           # Validate JSON
           jq '.' data/tmp.json > /dev/null
           jq '.' data/new_entry.json > /dev/null
+          jq '.' data/jimothy.json > /dev/null
 
           # Merge new entry into locations array
-          jq --slurpfile entry data/new_entry.json '.locations += $entry' data/tmp.json > data/jimothy.json
+          # jq --slurpfile entry data/new_entry.json '.locations += $entry' data/tmp.json > data/jimothy.json
+          jq --argjson entry "$NEW_ENTRY" '.locations += [$entry]' data/jimothy.json > data/tmp.json
+          mv data/tmp.json data/jimothy.json
 
           # Configure Git identity
           git config user.name "Jimothy Tracker Bot"
