@@ -138,9 +138,25 @@ function renderJournalPagination() {
   const pagination = document.getElementById("journalPagination");
 
   pagination.innerHTML = `
-    <button id="journalPrev" ${currentPage === 1 ? "disabled" : ""}>Prev</button>
-    <span>Page ${currentPage} / ${totalPages}</span>
-    <button id="journalNext" ${currentPage === totalPages ? "disabled" : ""}>Next</button>
+    <button
+      id="journalPrev"
+      class="px-3 py-1 bg-blue-600 text-white rounded disabled:opacity-40"
+      ${currentPage === 1 ? "disabled" : ""}
+    >
+      Prev
+    </button>
+  
+    <span class="px-2 text-sm text-[#858481]">
+      Page ${currentPage} / ${totalPages}
+    </span>
+  
+    <button
+      id="journalNext"
+      class="px-3 py-1 bg-blue-600 text-white rounded disabled:opacity-40"
+      ${currentPage === totalPages ? "disabled" : ""}
+    >
+      Next
+    </button>
   `;
 
   document.getElementById("journalPrev").onclick = () => {
