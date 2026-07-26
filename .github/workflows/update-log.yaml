@@ -45,13 +45,14 @@ jobs:
           if [ ! -f data/jimothy.json ]; then
             echo '{"locations":[]}' > data/jimothy.json
           fi
+
+          # Validate existing JSON
+          jq '.' data/jimothy.json > /dev/null
           
           # Write new entry safely
           echo "$NEW_ENTRY" > data/new_entry.json
-
           # Validate JSON
           jq '.' data/new_entry.json > /dev/null
-          jq '.' data/jimothy.json > /dev/null
 
           # Merge new entry into locations array
           # jq --slurpfile entry data/new_entry.json '.locations += $entry' data/tmp.json > data/jimothy.json
