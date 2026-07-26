@@ -8,6 +8,7 @@ const GITHUB_FILE_PATH = "data/jimothy.json";
 let map;
 let marker;
 let mapMarkers = [];
+let markerCluster = null;
 let showingAll = false;
 
 // ------------------------------
@@ -50,8 +51,6 @@ function drawPageMarkers(pageItems) {
 // ------------------------------
 // drawAllMarkers
 // ------------------------------
-let markerCluster = null;
-
 function drawAllMarkers() {
   clearMapMarkers();
 
