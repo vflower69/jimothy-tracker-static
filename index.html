@@ -14,21 +14,96 @@
       rel="stylesheet"
     />
     <title>Jimothy the Raccoon Tracker</title>
-    <!-- script type="module" crossorigin src="/assets/index-Dtw-Vwsk.js"></script -->
 
     <link rel="stylesheet" crossorigin href="/assets/index-Cg66F2qH.css">
-
     <script type="module" src="/assets/index.js"></script>
-    <!-- script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAlxVpnD3O24HnHep4J4gwWZCHqKG7uewk&libraries=places"></script -->
+
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAlxVpnD3O24HnHep4J4gwWZCHqKG7uewk&libraries=places&callback=initMap" async defer></script>
+
+    <style>
+      /* Mini-map container */
+      #miniMap {
+        width: 100%;
+        height: 180px;
+        border-radius: 12px;
+      }
+    </style>
   </head>
+
   <body class="font-sans bg-[#f8f8f7] text-[#34322d]">
 
   <!-- Header -->
-  <header class="p-6 text-center">
-    <h1 class="text-4xl font-serif mb-2">Jimothy the Raccoon Tracker</h1>
-    <p class="text-sm text-[#858481]">A community field journal for respectful neighbors.</p>
+  <header class="flex items-center justify-between px-8 py-6 bg-gradient-to-b from-[#f8f8f7] to-[#f1f0ee] shadow-sm">
+    <div class="flex items-center gap-3">
+      <img src="/assets/raccoon-icon.svg" alt="Jimothy icon" class="w-7 h-7 opacity-80">
+      <h1 class="text-2xl font-serif text-[#34322d]">Jimothy the Raccoon Tracker</h1>
+    </div>
+
+    <nav class="flex items-center gap-8 text-sm font-medium text-[#34322d]">
+      <a href="#map" class="hover:text-[#a64f3c]">Explore map</a>
+      <a href="#journalList" class="hover:text-[#a64f3c]">Sighting log</a>
+      <a href="#sightingForm" class="hover:text-[#a64f3c]">Report a sighting</a>
+    </nav>
+
+    <button class="px-4 py-2 bg-[#34322d] text-white rounded-full hover:bg-[#a64f3c]">
+      Share a sighting
+    </button>
   </header>
+
+  <!-- Intro Section -->
+  <section class="px-8 py-12 max-w-6xl mx-auto">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
+
+      <!-- Left Text -->
+      <div>
+        <h2 class="text-4xl font-serif mb-4">A community field journal</h2>
+        <p class="text-lg text-[#55524d] leading-relaxed mb-6">
+          Jimothy is a shy, clever raccoon who roams the neighborhoods and parks of Seattle.
+          This public tracker helps neighbors share respectful sightings and keep an eye on his little adventures.
+        </p>
+
+        <p class="text-sm text-[#858481]">
+          Please observe wildlife from a distance. Jimothy is not domesticated and should never be approached.
+        </p>
+      </div>
+
+      <!-- Right Card -->
+      <div class="bg-white rounded-xl shadow p-6">
+        <h3 class="text-xl font-semibold mb-3">Tonight’s little wanderer</h3>
+
+        <!-- Mini Map -->
+        <div id="miniMap" class="mb-4"></div>
+
+        <p class="text-sm text-[#55524d] mb-4">
+          Recent sightings suggest Jimothy has been exploring the wooded trails near Discovery Park.
+        </p>
+
+        <a href="#journalList"
+           class="inline-block px-4 py-2 bg-[#34322d] text-white rounded-full hover:bg-[#a64f3c]">
+          View recent sightings
+        </a>
+      </div>
+
+    </div>
+
+    <!-- Jimothy’s Mood Card -->
+    <div class="mt-12 bg-white rounded-xl shadow p-6 max-w-xl">
+      <h3 class="text-xl font-semibold mb-3">Jimothy’s current mood</h3>
+      <p class="text-[#55524d] mb-2">
+        Based on recent sightings and neighbor notes, Jimothy seems:
+      </p>
+
+      <div class="flex items-center gap-4 mt-4">
+        <img src="/assets/raccoon-icon.svg" class="w-10 h-10 opacity-80">
+        <span class="text-lg font-medium">🦝 Curious & Adventurous</span>
+      </div>
+
+      <p class="text-sm text-[#858481] mt-3">
+        He’s been spotted sniffing around berry bushes and investigating recycling bins.
+      </p>
+    </div>
+
+  </section>
 
   <!-- Explore Map -->
   <section class="max-w-6xl mx-auto p-6">
@@ -63,13 +138,6 @@
         <textarea id="noteInput" class="w-full p-3 rounded border" rows="3" placeholder="What was Jimothy up to?"></textarea>
       </div>
 
-      <!-- Photo 
-      <div>
-        <label class="block text-sm font-medium mb-1">A photo of Jimothy (optional)</label>
-        <input id="photoInput" type="file" accept="image/jpeg,image/png,image/webp" class="w-full">
-      </div>
-      -->
-
       <button onclick="submitFormSighting()" type="submit" class="px-4 py-2 bg-blue-600 text-white rounded">Submit sighting</button>
     </form>
   </section>
@@ -82,17 +150,33 @@
       The field journal needs a moment. Public sightings could not be loaded just now.
       <button id="reloadJournal" class="underline ml-2">Reload sightings</button>
     </div>
-<!--
-    <ul id="journalList" class="space-y-4"></ul>
-    -->
+
     <ul id="journalList" class="space-y-4"></ul>
     <div id="journalPagination" class="mt-4 flex items-center gap-4 justify-center"></div>
+
     <button id="toggleAllSightings"
         class="mt-4 px-4 py-2 bg-[#34322d] text-white rounded">
       Show All Sightings
     </button>
 
   </section>
+
+  <script>
+    // Mini-map initialization
+    function initMiniMap() {
+      const miniMap = new google.maps.Map(document.getElementById("miniMap"), {
+        center: { lat: 47.659, lng: -122.415 }, // Discovery Park area
+        zoom: 13,
+        disableDefaultUI: true,
+      });
+    }
+
+    window.addEventListener("load", () => {
+      if (window.google && google.maps) {
+        initMiniMap();
+      }
+    });
+  </script>
 
   </body>
 </html>
