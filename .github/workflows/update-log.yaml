@@ -50,7 +50,6 @@ jobs:
           echo "$NEW_ENTRY" > data/new_entry.json
 
           # Validate JSON
-          jq '.' data/tmp.json > /dev/null
           jq '.' data/new_entry.json > /dev/null
           jq '.' data/jimothy.json > /dev/null
 
