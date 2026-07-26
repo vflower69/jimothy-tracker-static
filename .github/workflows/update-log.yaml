@@ -35,18 +35,17 @@ jobs:
       - name: Append new sighting to JSON
         shell: bash
         env:
-          PAYLOAD: ${{ inputs.payload }}
+          # PAYLOAD: ${{ inputs.payload }}
           # NEW_ENTRY: ${{ inputs.new_entry }}
-          NEW_ENTRY: ${{ toJson(github.event.client_payload) }}
+          # Detect trigger type and choose correct payload source
+          PAYLOAD: ${{ github.event_name == 'repository_dispatch' && toJson(github.event.client_payload) || inputs.payload }}
+          NEW_ENTRY: ${{ github.event_name == 'repository_dispatch' && toJson(github.event.client_payload) || inputs.new_entry }}
         run: |
           # Ensure file exists
           if [ ! -f data/jimothy.json ]; then
             echo '{"locations":[]}' > data/jimothy.json
           fi
           
-          # Write payload safely
-          echo "$PAYLOAD" > data/tmp.json
-
           # Write new entry safely
           echo "$NEW_ENTRY" > data/new_entry.json
 
