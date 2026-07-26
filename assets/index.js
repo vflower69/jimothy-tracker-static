@@ -1,5 +1,5 @@
 // ------------------------------
-// CONFIG
+// CONFIG VARS
 // ------------------------------
 const GITHUB_USER = "vflower69";
 const GITHUB_REPO = "jimothy-tracker-static";
