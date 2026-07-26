@@ -53,14 +53,27 @@ function placeMarker(latLng) {
 // ------------------------------
 // LOAD JOURNAL
 // ------------------------------
+// Add pagenation - part1
+let currentPage = 1;
+const perPage = 5;
+let allLocations = [];
+
 async function loadJournal() {
   try {
     const res = await fetch(`https://raw.githubusercontent.com/${GITHUB_USER}/${GITHUB_REPO}/main/${GITHUB_FILE_PATH}`);
     const data = await res.json();
 
+    // Add pagenation - part2: Save all locations (newest first)
+    allLocations = data.locations.slice().reverse();
+
     // Draw markers on map
     loadSightingsOnMap(data.locations);
 
+    // Add pagenation - part3: Render page 1
+    currentPage = 1;
+    renderJournalPage();
+
+    /* Originally full sighting list
     const list = document.getElementById("journalList");
     list.innerHTML = "";
 
@@ -77,6 +90,7 @@ async function loadJournal() {
         `;
         list.appendChild(li);
       });
+      */
 
     document.getElementById("journalError").classList.add("hidden");
   } catch (err) {
@@ -84,6 +98,60 @@ async function loadJournal() {
   }
 }
 
+// ------------------------------
+// renderJournalPage
+// ------------------------------
+function renderJournalPage() {
+  const list = document.getElementById("journalList");
+  list.innerHTML = "";
+
+  const start = (currentPage - 1) * perPage;
+  const end = start + perPage;
+  const pageItems = allLocations.slice(start, end);
+
+  pageItems.forEach((loc) => {
+    const li = document.createElement("li");
+    li.className = "p-4 bg-white rounded shadow";
+    li.innerHTML = `
+      <div class="font-semibold">${loc.timestamp}</div>
+      <div>${loc.lat}, ${loc.lng}</div>
+      <div class="text-sm text-[#858481]">${loc.note || ""}</div>
+    `;
+    list.appendChild(li);
+  });
+
+  renderJournalPagination();
+}
+
+// ------------------------------
+// renderJournalPagination
+// ------------------------------
+function renderJournalPagination() {
+  const totalPages = Math.ceil(allLocations.length / perPage);
+  const pagination = document.getElementById("journalPagination");
+
+  pagination.innerHTML = `
+    <button id="journalPrev" ${currentPage === 1 ? "disabled" : ""}>Prev</button>
+    <span>Page ${currentPage} / ${totalPages}</span>
+    <button id="journalNext" ${currentPage === totalPages ? "disabled" : ""}>Next</button>
+  `;
+
+  document.getElementById("journalPrev").onclick = () => {
+    if (currentPage > 1) {
+      currentPage--;
+      renderJournalPage();
+    }
+  };
+
+  document.getElementById("journalNext").onclick = () => {
+    if (currentPage < totalPages) {
+      currentPage++;
+      renderJournalPage();
+    }
+  };
+}
+
+//
 document.getElementById("reloadJournal").onclick = loadJournal;
 
 // ------------------------------
