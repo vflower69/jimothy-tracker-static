@@ -51,22 +51,27 @@ function drawPageMarkers(pageItems) {
 // ------------------------------
 // drawAllMarkers
 // ------------------------------
+let markerCluster = null;
+
 function drawAllMarkers() {
   clearMapMarkers();
 
-  allLocations.forEach(loc => {
-    const marker = new google.maps.Marker({
+  const markers = allLocations.map(loc => {
+    return new google.maps.Marker({
       position: { lat: loc.lat, lng: loc.lng },
       map,
-      label: "J",
+      label: "J"
     });
-    mapMarkers.push(marker);
   });
 
-  // Cluster them
-  markerCluster = new markerClusterer.MarkerClusterer({ map, markers: mapMarkers });
-}
+  mapMarkers = markers;
 
+  // Cluster them
+  markerCluster = new markerClusterer.MarkerClusterer({ 
+    map, 
+    markers 
+  });
+}
 
 // ------------------------------
 // GOOGLE MAP INIT
