@@ -7,6 +7,32 @@ const GITHUB_FILE_PATH = "data/jimothy.json";
 
 let map;
 let marker;
+let mapMarkers = [];
+
+// ------------------------------
+// CLEAR THE MARKERS ON MAP
+// ------------------------------
+function clearMapMarkers() {
+  mapMarkers.forEach(m => m.setMap(null));
+  mapMarkers = [];
+}
+
+// --------------------------------------------------------------------
+// DRAW MARKERS ON MAP FOR ONLY THE CURRENT PAGE OF SIGHTING PAGENATION
+// --------------------------------------------------------------------
+function drawPageMarkers(pageItems) {
+  clearMapMarkers();
+
+  pageItems.forEach(loc => {
+    const marker = new google.maps.Marker({
+      position: { lat: loc.lat, lng: loc.lng },
+      map,
+      label: "J",
+    });
+
+    mapMarkers.push(marker);
+  });
+}
 
 // ------------------------------
 // GOOGLE MAP INIT
@@ -72,7 +98,7 @@ async function loadJournal() {
     allLocations = data.locations.slice().reverse();
 
     // Draw markers on map
-    loadSightingsOnMap(data.locations);
+    //loadSightingsOnMap(data.locations); // Map markers now handled per page
 
     // Add pagenation - part3: Render page 1
     currentPage = 1;
@@ -116,6 +142,7 @@ function renderJournalPage() {
   const end = start + perPage;
   const pageItems = allLocations.slice(start, end);
 
+  // Render list items
   pageItems.forEach((loc) => {
     const li = document.createElement("li");
     li.className = "p-4 bg-white rounded shadow";
@@ -126,6 +153,9 @@ function renderJournalPage() {
     `;
     list.appendChild(li);
   });
+
+  // Draw only current page markers
+  drawPageMarkers(pageItems);
 
   renderJournalPagination();
 }
