@@ -59,6 +59,11 @@ const perPage = 5;
 let allLocations = [];
 
 async function loadJournal() {
+  const errorEl = document.getElementById("journalError");
+
+  // Hide error BEFORE starting the fetch
+  errorEl.classList.add("hidden");
+  
   try {
     const res = await fetch(`https://raw.githubusercontent.com/${GITHUB_USER}/${GITHUB_REPO}/main/${GITHUB_FILE_PATH}`);
     const data = await res.json();
@@ -92,9 +97,11 @@ async function loadJournal() {
       });
       */
 
-    document.getElementById("journalError").classList.add("hidden");
+    //document.getElementById("journalError").classList.add("hidden");
   } catch (err) {
-    document.getElementById("journalError").classList.remove("hidden");
+    // Only show error if fetch truly fails
+    errorEl.classList.remove("hidden");
+    //document.getElementById("journalError").classList.remove("hidden");
   }
 }
 
