@@ -9,6 +9,7 @@ let map;
 let marker;
 let mapMarkers = [];
 let markerCluster = null;
+let showingAll = false;
 
 // ------------------------------
 // CLEAR THE MARKERS ON MAP
@@ -183,8 +184,18 @@ function renderJournalPage() {
       <div class="font-semibold">${loc.timestamp}</div>
       <div>${loc.lat}, ${loc.lng}</div>
       <div class="text-sm text-[#858481]">${loc.note || ""}</div>
+      <button class="mt-2 px-3 py-1 bg-blue-600 text-white rounded zoomBtn">
+        Zoom To Sighting
+      </button>
     `;
+
     list.appendChild(li);
+
+    // ⭐ Attach zoom behavior
+    li.querySelector(".zoomBtn").onclick = () => {
+      map.panTo({ lat: loc.lat, lng: loc.lng });
+      map.setZoom(16);
+    };
   });
 
   // Draw only current page markers
@@ -239,6 +250,21 @@ function renderJournalPagination() {
 
 //
 document.getElementById("reloadJournal").onclick = loadJournal;
+
+// -----------------------
+// toggleAllSightings
+// -----------------------
+document.getElementById("toggleAllSightings").onclick = () => {
+  showingAll = !showingAll;
+
+  if (showingAll) {
+    document.getElementById("toggleAllSightings").innerText = "Show paginated sightings";
+    drawAllMarkers();
+  } else {
+    document.getElementById("toggleAllSightings").innerText = "Show all sightings";
+    renderJournalPage(); // returns to paginated markers
+  }
+};
 
 // ------------------------------
 // SUBMIT SIGHTING
