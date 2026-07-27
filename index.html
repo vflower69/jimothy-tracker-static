@@ -45,9 +45,11 @@
         <a href="#sightingForm" class="hover:text-[#a64f3c]">Report A Sighting</a>
       </nav>
   
-      <button class="px-4 py-2 bg-[#f1f0ee] text-black rounded-full hover:bg-[#e4e2df]">
-        Share A Sighting
+      <button id="contactUsBtn"
+        class="px-4 py-2 bg-[#f1f0ee] text-black rounded-full hover:bg-[#e4e2df]">
+        Contact Us
       </button>
+
   
     </header>
 
@@ -213,14 +215,51 @@
 
     </section>
 
-    <footer class="mt-16 px-8 py-6 bg-[#f1f0ee] text-center text-sm text-[#55524d]">
-      <div class="font-serif text-lg text-[#34322d]">
-        Jimothy the Raccoon Tracker
-      </div>
-      <div class="mt-1">
+    <footer class="mt-16 px-8 py-4 bg-[#f1f0ee] border-t border-[#e4e2df] text-center">
+      <span class="font-serif text-lg text-[#34322d]">
+        Jimothy the Raccoon Tracker — 
+      </span>
+      <span class="text-sm text-[#55524d]">
         A public field journal for curious, respectful neighbors.
-      </div>
+      </span>
     </footer>
+    
+<!-- Contact Us Modal -->
+<div id="contactModal"
+     class="fixed inset-0 bg-black/40 flex items-center justify-center hidden">
+  <div class="bg-white rounded-xl shadow p-6 w-full max-w-md">
+    <h3 class="text-xl font-semibold mb-4">Contact Us</h3>
+
+    <form id="contactForm" class="space-y-4">
+      <div>
+        <label class="block text-sm font-medium mb-1">Subject</label>
+        <input id="contactSubject" type="text"
+               class="w-full p-3 rounded border"
+               placeholder="Subject">
+      </div>
+
+      <div>
+        <label class="block text-sm font-medium mb-1">Message</label>
+        <textarea id="contactMessage"
+                  class="w-full p-3 rounded border"
+                  rows="4"
+                  placeholder="Write your message here..."></textarea>
+      </div>
+
+      <div class="flex items-center justify-end gap-3">
+        <button type="button" id="closeContact"
+                class="px-4 py-2 bg-gray-200 rounded hover:bg-gray-300">
+          Cancel
+        </button>
+
+        <button type="submit"
+                class="px-4 py-2 bg-blue-600 text-white rounded">
+          Send Message
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
 
     <script>
       // Mini-map initialization
