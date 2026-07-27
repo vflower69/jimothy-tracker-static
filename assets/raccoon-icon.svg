@@ -1,56 +1,76 @@
-<svg width="96" height="96" viewBox="0 0 96 96" fill="none"
-     xmlns="http://www.w3.org/2000/svg">
-  <!-- Body (short spine, compact torso) -->
-  <ellipse cx="48" cy="52" rx="18" ry="14" fill="#F3E9D8" stroke="#34322d" stroke-width="2"/>
+<svg
+  width="400"
+  height="400"
+  viewBox="0 0 400 400"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <!-- Background (optional, remove if you want pure transparent) -->
+  <rect x="0" y="0" width="400" height="400" fill="none" />
 
-  <!-- Head (big chibi head) -->
-  <circle cx="48" cy="32" r="16" fill="#F3E9D8" stroke="#34322d" stroke-width="2"/>
+  <!-- Head -->
+  <ellipse cx="200" cy="190" rx="110" ry="95" fill="#4b4b4b" />
 
   <!-- Face mask -->
-  <path d="M36 30
-           C38 26, 42 24, 48 24
-           C54 24, 58 26, 60 30
-           C58 34, 54 36, 48 36
-           C42 36, 38 34, 36 30Z"
-        fill="#8A7A64"/>
+  <ellipse cx="200" cy="200" rx="90" ry="70" fill="#2f2f2f" />
 
-  <!-- Eyes -->
-  <circle cx="42" cy="30" r="3" fill="#34322d"/>
-  <circle cx="54" cy="30" r="3" fill="#34322d"/>
-  <!-- Eye highlights -->
-  <circle cx="41.2" cy="29.2" r="1" fill="#FFFFFF"/>
-  <circle cx="53.2" cy="29.2" r="1" fill="#FFFFFF"/>
-
-  <!-- Nose -->
-  <circle cx="48" cy="33.5" r="2" fill="#34322d"/>
-
-  <!-- Mouth -->
-  <path d="M44 36
-           C46 38, 50 38, 52 36"
-        stroke="#34322d" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+  <!-- Inner face -->
+  <ellipse cx="200" cy="205" rx="65" ry="50" fill="#d9d4c8" />
 
   <!-- Ears -->
-  <path d="M38 20
-           C36 18, 34 18, 33 20
-           C34 22, 36 23, 38 22Z"
-        fill="#F3E9D8" stroke="#34322d" stroke-width="2"/>
-  <path d="M58 20
-           C60 18, 62 18, 63 20
-           C62 22, 60 23, 58 22Z"
-        fill="#F3E9D8" stroke="#34322d" stroke-width="2"/>
+  <ellipse cx="140" cy="120" rx="35" ry="30" fill="#4b4b4b" />
+  <ellipse cx="260" cy="120" rx="35" ry="30" fill="#4b4b4b" />
+  <ellipse cx="140" cy="120" rx="22" ry="18" fill="#d9d4c8" />
+  <ellipse cx="260" cy="120" rx="22" ry="18" fill="#d9d4c8" />
 
-  <!-- Long legs (no tail) -->
-  <!-- Left leg -->
-  <rect x="40" y="58" width="5" height="16" rx="2.5"
-        fill="#F3E9D8" stroke="#34322d" stroke-width="2"/>
-  <!-- Right leg -->
-  <rect x="51" y="58" width="5" height="16" rx="2.5"
-        fill="#F3E9D8" stroke="#34322d" stroke-width="2"/>
+  <!-- Eye patches -->
+  <ellipse cx="165" cy="205" rx="35" ry="28" fill="#2f2f2f" />
+  <ellipse cx="235" cy="205" rx="35" ry="28" fill="#2f2f2f" />
 
-  <!-- Feet -->
-  <ellipse cx="42.5" cy="75" rx="4" ry="2.2" fill="#34322d"/>
-  <ellipse cx="53.5" cy="75" rx="4" ry="2.2" fill="#34322d"/>
+  <!-- Eyes -->
+  <circle cx="165" cy="205" r="9" fill="#000000" />
+  <circle cx="235" cy="205" r="9" fill="#000000" />
+  <circle cx="162" cy="202" r="3" fill="#ffffff" />
+  <circle cx="232" cy="202" r="3" fill="#ffffff" />
 
-  <!-- Subtle shadow under feet -->
-  <ellipse cx="48" cy="80" rx="14" ry="3" fill="#D9D4C8" opacity="0.6"/>
+  <!-- Nose -->
+  <ellipse cx="200" cy="225" rx="12" ry="9" fill="#1b1b1b" />
+
+  <!-- Mouth -->
+  <path
+    d="M180 240 Q200 255 220 240"
+    stroke="#1b1b1b"
+    stroke-width="3"
+    fill="none"
+    stroke-linecap="round"
+  />
+
+  <!-- Body -->
+  <ellipse cx="200" cy="310" rx="90" ry="70" fill="#4b4b4b" />
+
+  <!-- Belly -->
+  <ellipse cx="200" cy="315" rx="55" ry="45" fill="#d9d4c8" />
+
+  <!-- Tail -->
+  <path
+    d="M270 300
+       C320 290 340 320 330 345
+       C320 370 290 365 270 340
+       Z"
+    fill="#4b4b4b"
+  />
+  <!-- Tail stripes -->
+  <path
+    d="M280 305
+       C305 300 320 315 315 330
+       C310 345 295 345 285 335
+       Z"
+    fill="#2f2f2f"
+  />
+  <path
+    d="M290 325
+       C310 322 320 335 315 347
+       C310 360 298 360 290 350
+       Z"
+    fill="#2f2f2f"
+  />
 </svg>
