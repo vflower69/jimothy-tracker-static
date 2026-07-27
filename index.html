@@ -177,8 +177,8 @@
     <section class="max-w-6xl mx-auto p-6">
       <h2 class="text-2xl font-semibold mb-4">Sightings</h2>
     -->
-      <div class="bg-white rounded-xl shadow p-4 h-[500px] overflow-y-auto">
-        <h3 class="text-xl font-semibold mb-2">Sightings</h3>
+      <div class="bg-white rounded-xl shadow p-4 h-[500px] flex flex-col">
+        <h3 class="text-xl font-semibold mb-2 flex-shrink-0">Sightings</h3>
         
       <div id="journalError" class="hidden p-4 bg-red-100 rounded">
         The field journal needs a moment. Public sightings could not be loaded just now.
@@ -186,12 +186,16 @@
       </div>
         
       <!-- see function loadJournal() from the assets/index.js for populating the items list -->
-      <ul id="journalList" class="space-y-4"></ul>
-     
-      <div id="journalPagination" class="mt-4 flex items-center gap-4 justify-center"></div>
+      <!-- Scrollable list -->
+      <div class="flex-grow overflow-y-auto">
+        <ul id="journalList" class="space-y-2"></ul>
+      </div>
+
+      <!-- Pagination outside scroll -->
+      <div id="journalPagination" class="mt-3 flex items-center gap-4 justify-center flex-shrink-0"></div>
   
       <button id="toggleAllSightings"
-          class="mt-4 px-4 py-2 bg-[#34322d] text-white rounded">
+          class="mt-3 px-4 py-2 bg-[#34322d] text-white rounded flex-shrink-0">
         Show All Sightings
       </button>
       </div>
