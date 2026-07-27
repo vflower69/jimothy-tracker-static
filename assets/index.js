@@ -139,8 +139,8 @@ async function loadJournal() {
 
     // Add pagenation - part3: Render page 1
     currentPage = 1;
-    renderJournalPage();
-
+    
+    renderJournalPage(); //replaced below commented codes
     /* Originally full sighting list
     const list = document.getElementById("journalList");
     list.innerHTML = "";
@@ -184,12 +184,15 @@ function renderJournalPage() {
     const li = document.createElement("li");
     li.className = "p-4 bg-white rounded shadow";
     li.innerHTML = `
-      <div class="font-semibold">${loc.timestamp}</div>
-      <div>${loc.lat}, ${loc.lng}</div>
-      <div class="text-sm text-[#858481]">${loc.note || ""}</div>
-      <button class="mt-2 px-3 py-1 bg-blue-600 text-white rounded zoomBtn">
-        Zoom To Sighting
-      </button>
+      <div class="flex items-center justify-between text-sm">
+        <span class="font-semibold">
+          ${loc.timestamp}; ${loc.lat}, ${loc.lng}; ${loc.note || ""}
+        </span>
+    
+        <button class="px-3 py-1 bg-blue-600 text-white rounded zoomBtn">
+          Zoom
+        </button>
+      </div>
     `;
 
     list.appendChild(li);
