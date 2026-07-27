@@ -184,8 +184,17 @@
         The field journal needs a moment. Public sightings could not be loaded just now.
         <button id="reloadJournal" class="underline ml-2">Reload sightings</button>
       </div>
-  
+      <!--
       <ul id="journalList" class="space-y-4"></ul>
+      -->
+      <ul id="journalList" class="flex flex-col gap-2 text-sm">
+        <li class="flex items-center justify-between bg-white rounded-lg shadow p-2">
+          <button class="bg-blue-600 hover:bg-blue-700 text-white px-3 py-1 rounded text-sm">
+            Zoom
+          </button>
+        </li>
+      </ul>
+
       <div id="journalPagination" class="mt-4 flex items-center gap-4 justify-center"></div>
   
       <button id="toggleAllSightings"
