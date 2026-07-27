@@ -69,7 +69,7 @@
           </p>
   
           <p class="text-sm text-[#858481]">
-            Please observe wildlife from a distance. Jimothy is not domesticated and should never be approached.
+            Please observe wildlife from a distance. Jimothy is not domesticated and should never be approached. Do not feed, corner, or follow Jimothy.
           </p>
         </div>
   
@@ -164,8 +164,18 @@
           <label class="block text-sm font-medium mb-1">A little more detail (optional)</label>
           <textarea id="noteInput" class="w-full p-3 rounded border" rows="3" placeholder="Sighting neighborhood and what was Jimothy up to?"></textarea>
         </div>
-  
-        <button onclick="submitFormSighting()" type="submit" class="px-4 py-2 bg-blue-600 text-white rounded">Submit Sighting</button>
+
+        <div class="flex items-center gap-3 mt-2">
+          <button onclick="submitFormSighting()" type="submit"
+                  class="px-4 py-2 bg-blue-600 text-white rounded">
+            Submit Sighting
+          </button>
+        
+          <p class="text-xs text-[#858481]">
+            By submitting, you are sharing this location and note publicly with the Jimothy community.
+          </p>
+        </div>
+
       </form>
         </div>
     <!--
