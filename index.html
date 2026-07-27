@@ -217,12 +217,25 @@
 
     <footer class="mt-16 px-8 py-4 bg-[#f1f0ee] border-t border-[#e4e2df] text-center">
       <span class="font-serif text-lg text-[#34322d]">
-        Jimothy the Raccoon Tracker — 
+        Jimothy the Raccoon Tracker
       </span>
+      There are
+      <span id="visit-meter" style="font-family: monospace; font-size: 2rem; letter-spacing: 4px;">
+        0000000000
+      </span>
+      visitors to this Web site currently.
       <span class="text-sm text-[#55524d]">
         A public field journal for curious, respectful neighbors.
       </span>
     </footer>
+<script>
+  fetch("https://counter.jimothytracker.org/")
+  .then(r => r.json())
+  .then(data => {
+    const value = data.value.toString().padStart(10, "0");
+    document.getElementById("visit-meter").textContent = value;
+  });
+</script>
     
 <!-- Contact Us Modal -->
 <div id="contactModal"
