@@ -491,3 +491,37 @@ function loadSightingsOnMap(locations) {
 //Explicitly exposes the function globally so the HTML can call it.
 window.submitFormSighting = submitFormSighting;
 window.initMap = initMap;
+
+// -----------------------------------------
+// The modal form is for "Contact Us" button
+// -----------------------------------------
+// Open modal
+document.getElementById("contactUsBtn").onclick = () => {
+  document.getElementById("contactModal").classList.remove("hidden");
+};
+
+// Close modal
+document.getElementById("closeContact").onclick = () => {
+  document.getElementById("contactModal").classList.add("hidden");
+};
+
+// Handle modal form submission
+document.getElementById("contactForm").onsubmit = (e) => {
+  e.preventDefault();
+
+  const subject = document.getElementById("contactSubject").value.trim();
+  const message = document.getElementById("contactMessage").value.trim();
+
+  if (!subject || !message) {
+    alert("Please fill out both fields.");
+    return;
+  }
+
+  alert("Your message has been sent to the Jimothy community team.");
+  document.getElementById("contactModal").classList.add("hidden");
+
+  // Clear fields
+  document.getElementById("contactSubject").value = "";
+  document.getElementById("contactMessage").value = "";
+};
+
