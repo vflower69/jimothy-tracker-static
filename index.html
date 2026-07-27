@@ -144,13 +144,13 @@
       <h2 class="text-2xl font-semibold mb-4">Report A Sighting</h2>
     -->
         <div class="bg-white rounded-xl shadow p-4 h-[500px] overflow-y-auto">
-      <h3 class="text-xl font-semibold mb-2">Report A Sighting</h3>
+      <h3 class="text-xl font-semibold mb-2"><b>Report A Sighting</b></h3>
       <form id="sightingForm" class="space-y-4">
   
         <!-- Location -->
         <div>
           <label class="block text-sm font-medium mb-1">Where did you see him?</label>
-          <input id="locationInput" type="text" class="w-full p-3 rounded border" placeholder="Click sighting location on the map, or enter latitude and longitude seperated by ,">
+          <input id="locationInput" type="text" class="w-full p-3 rounded border" placeholder="Click sighting location on the map.">
         </div>
   
         <!-- Time -->
@@ -162,10 +162,10 @@
         <!-- Note -->
         <div>
           <label class="block text-sm font-medium mb-1">A little more detail (optional)</label>
-          <textarea id="noteInput" class="w-full p-3 rounded border" rows="3" placeholder="What was Jimothy up to?"></textarea>
+          <textarea id="noteInput" class="w-full p-3 rounded border" rows="3" placeholder="Sighting neighborhood and what was Jimothy up to?"></textarea>
         </div>
   
-        <button onclick="submitFormSighting()" type="submit" class="px-4 py-2 bg-blue-600 text-white rounded">Submit sighting</button>
+        <button onclick="submitFormSighting()" type="submit" class="px-4 py-2 bg-blue-600 text-white rounded">Submit Sighting</button>
       </form>
         </div>
     <!--
@@ -178,7 +178,7 @@
       <h2 class="text-2xl font-semibold mb-4">Sightings</h2>
     -->
       <div class="bg-white rounded-xl shadow p-4 h-[500px] flex flex-col">
-        <h3 class="text-xl font-semibold mb-2 flex-shrink-0">Sightings</h3>
+        <h3 class="text-xl font-semibold mb-2 flex-shrink-0"><b>Sightings</b></h3>
         
       <div id="journalError" class="hidden p-4 bg-red-100 rounded">
         The field journal needs a moment. Public sightings could not be loaded just now.
