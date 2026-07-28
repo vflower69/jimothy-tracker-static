@@ -525,3 +525,14 @@ document.getElementById("contactForm").onsubmit = (e) => {
   document.getElementById("contactMessage").value = "";
 };
 
+// --------------------------------
+// Count visitors
+// --------------------------------
+document.addEventListener("DOMContentLoaded", () => {
+  fetch("https://counter.jimothytracker.org/")
+    .then(r => r.json())
+    .then(data => {
+      const value = data.value.toString().padStart(10, "0");
+      document.getElementById("visit-meter").textContent = value;
+    });
+});
