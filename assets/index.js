@@ -492,9 +492,22 @@ function loadSightingsOnMap(locations) {
 window.submitFormSighting = submitFormSighting;
 window.initMap = initMap;
 
+// --------------------------------
+// Count visitors
+// --------------------------------
+document.addEventListener("DOMContentLoaded", () => {
+  fetch("https://counter.jimothytracker.org/")
+    .then(r => r.json())
+    .then(data => {
+      const value = data.value.toString().padStart(10, "0");
+      document.getElementById("visit-meter").textContent = value;
+    });
+});
+
 // -----------------------------------------
 // The modal form is for "Contact Us" button
 // -----------------------------------------
+/* ********Old version **************
 // Open modal
 document.getElementById("contactUsBtn").onclick = () => {
   document.getElementById("contactModal").classList.remove("hidden");
@@ -524,15 +537,58 @@ document.getElementById("contactForm").onsubmit = (e) => {
   document.getElementById("contactSubject").value = "";
   document.getElementById("contactMessage").value = "";
 };
+********Old version ************** */
 
-// --------------------------------
-// Count visitors
-// --------------------------------
-document.addEventListener("DOMContentLoaded", () => {
-  fetch("https://counter.jimothytracker.org/")
-    .then(r => r.json())
-    .then(data => {
-      const value = data.value.toString().padStart(10, "0");
-      document.getElementById("visit-meter").textContent = value;
-    });
+// Contact Modal Logic
+const contactModal = document.getElementById("contactModal");
+const closeContact = document.getElementById("closeContact");
+const toast = document.getElementById("toast");
+
+closeContact.addEventListener("click", () => {
+  contactModal.classList.add("hidden");
+});
+
+// Show toast helper
+function showToast(message) {
+  toast.textContent = message;
+  toast.style.opacity = "1";
+  setTimeout(() => {
+    toast.style.opacity = "0";
+  }, 2500);
+}
+
+// Form submission
+document.getElementById("contactForm").addEventListener("submit", async (e) => {
+  e.preventDefault();
+
+  const form = e.target;
+  const formData = new FormData(form);
+
+  // Basic client-side validation
+  const email = formData.get("sender_email");
+  const message = formData.get("message");
+
+  if (!email || !email.includes("@")) {
+    showToast("Please enter a valid email.");
+    return;
+  }
+
+  if (!message || message.length < 5) {
+    showToast("Message is too short.");
+    return;
+  }
+
+  // Submit to Cloudflare Forms
+  const res = await fetch("/cdn-cgi/forms/send", {
+    method: "POST",
+    body: formData
+  });
+
+  if (res.ok) {
+    showToast("Message sent!");
+    form.reset();
+    contactModal.classList.add("hidden");
+  } else {
+    showToast("Error sending message.");
+  }
 });
