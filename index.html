@@ -243,17 +243,33 @@
   <div class="bg-white rounded-xl shadow p-6 w-full max-w-md">
     <h3 class="text-xl font-semibold mb-4">Contact Us</h3>
 
-    <form id="contactForm" class="space-y-4">
+    <form id="contactForm" method="POST" action="/cdn-cgi/forms/send" class="space-y-4">
+
+      <!-- Sender Email -->
+      <div>
+        <label class="block text-sm font-medium mb-1">Your Email</label>
+        <input 
+          id="contactEmail"
+          name="sender_email"
+          type="email"
+          required
+          class="w-full p-3 rounded border"
+          placeholder="you@example.com">
+      </div>
+
+      <!-- Subject -->
       <div>
         <label class="block text-sm font-medium mb-1">Subject</label>
-        <input id="contactSubject" type="text"
+        <input id="contactSubject" name="subject" type="text"
                class="w-full p-3 rounded border"
                placeholder="Subject">
       </div>
 
+      <!-- Message -->
       <div>
         <label class="block text-sm font-medium mb-1">Message</label>
         <textarea id="contactMessage"
+                  name="message"
                   class="w-full p-3 rounded border"
                   rows="4"
                   placeholder="Write your message here..."></textarea>
