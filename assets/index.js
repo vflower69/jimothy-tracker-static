@@ -539,16 +539,27 @@ document.getElementById("contactForm").onsubmit = (e) => {
 };
 ********Old version ************** */
 
+// --------------------
 // Contact Modal Logic
+// --------------------
+
+// Elements
 const contactModal = document.getElementById("contactModal");
+const contactUsBtn = document.getElementById("contactUsBtn");
 const closeContact = document.getElementById("closeContact");
 const toast = document.getElementById("toast");
 
+// Open modal
+contactUsBtn.addEventListener("click", () => {
+  contactModal.classList.remove("hidden");
+});
+
+// Close modal
 closeContact.addEventListener("click", () => {
   contactModal.classList.add("hidden");
 });
 
-// Show toast helper
+// Toast helper
 function showToast(message) {
   toast.textContent = message;
   toast.style.opacity = "1";
@@ -564,7 +575,7 @@ document.getElementById("contactForm").addEventListener("submit", async (e) => {
   const form = e.target;
   const formData = new FormData(form);
 
-  // Basic client-side validation
+  // Basic validation
   const email = formData.get("sender_email");
   const message = formData.get("message");
 
@@ -592,3 +603,4 @@ document.getElementById("contactForm").addEventListener("submit", async (e) => {
     showToast("Error sending message.");
   }
 });
+
