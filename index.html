@@ -236,59 +236,84 @@
       </div>
     </footer>
 
-    
 <!-- Contact Us Modal -->
 <div id="contactModal"
      class="fixed inset-0 bg-black/40 flex items-center justify-center hidden">
-  <div class="bg-white rounded-xl shadow p-6 w-full max-w-md">
-    <h3 class="text-xl font-semibold mb-4">Contact Us</h3>
+  <div class="bg-[#f9f8f6] border border-[#d8d6d3] rounded-xl shadow-xl p-6 w-full max-w-md
+              font-serif text-[#34322d]">
+    <h3 class="text-2xl mb-4 tracking-wide">Contact Us</h3>
 
     <form id="contactForm" method="POST" action="/cdn-cgi/forms/send" class="space-y-4">
 
+      <!-- Honeypot (spam trap) -->
+      <input type="text" name="nickname" class="hidden">
+
+      <!-- Sender Name -->
+      <div>
+        <label class="block text-sm mb-1">Your Name</label>
+        <input 
+          id="contactName"
+          name="sender_name"
+          type="text"
+          class="w-full p-3 rounded-md border border-[#d8d6d3] bg-white shadow-sm
+                 focus:outline-none focus:ring-2 focus:ring-[#8c8a86]"
+          placeholder="Jimothy’s Neighbor">
+      </div>
+
       <!-- Sender Email -->
       <div>
-        <label class="block text-sm font-medium mb-1">Your Email</label>
+        <label class="block text-sm mb-1">Your Email</label>
         <input 
           id="contactEmail"
           name="sender_email"
           type="email"
           required
-          class="w-full p-3 rounded border"
+          class="w-full p-3 rounded-md border border-[#d8d6d3] bg-white shadow-sm
+                 focus:outline-none focus:ring-2 focus:ring-[#8c8a86]"
           placeholder="you@example.com">
       </div>
 
       <!-- Subject -->
       <div>
-        <label class="block text-sm font-medium mb-1">Subject</label>
+        <label class="block text-sm mb-1">Subject</label>
         <input id="contactSubject" name="subject" type="text"
-               class="w-full p-3 rounded border"
+               class="w-full p-3 rounded-md border border-[#d8d6d3] bg-white shadow-sm
+                      focus:outline-none focus:ring-2 focus:ring-[#8c8a86]"
                placeholder="Subject">
       </div>
 
       <!-- Message -->
       <div>
-        <label class="block text-sm font-medium mb-1">Message</label>
+        <label class="block text-sm mb-1">Message</label>
         <textarea id="contactMessage"
                   name="message"
-                  class="w-full p-3 rounded border"
+                  class="w-full p-3 rounded-md border border-[#d8d6d3] bg-white shadow-sm
+                         focus:outline-none focus:ring-2 focus:ring-[#8c8a86]"
                   rows="4"
                   placeholder="Write your message here..."></textarea>
       </div>
 
-      <div class="flex items-center justify-end gap-3">
+      <div class="flex items-center justify-end gap-3 pt-2">
         <button type="button" id="closeContact"
-                class="px-4 py-2 bg-gray-200 rounded hover:bg-gray-300">
+                class="px-4 py-2 bg-[#e4e2df] rounded-md hover:bg-[#d8d6d3]">
           Cancel
         </button>
 
         <button type="submit"
-                class="px-4 py-2 bg-blue-600 text-white rounded">
+                class="px-4 py-2 bg-[#34322d] text-white rounded-md hover:bg-[#4a483f] transition">
           Send Message
         </button>
       </div>
     </form>
   </div>
 </div>
+
+<!-- Toast Notification -->
+<div id="toast"
+     class="fixed bottom-6 right-6 bg-[#34322d] text-white px-4 py-3 rounded-md shadow-lg
+            opacity-0 transition-opacity duration-500 pointer-events-none">
+</div>
+
 
     <!-- Not needed -->
     <!-- script>
