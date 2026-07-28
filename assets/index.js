@@ -590,11 +590,23 @@ document.getElementById("contactForm").addEventListener("submit", async (e) => {
   }
 
   // Submit to Cloudflare Forms
+  /*
   const res = await fetch("/contact", {
     method: "POST",
     body: formData
   });
-
+*/
+const form = document.getElementById("contactForm");
+form.addEventListener("submit", async (e) => {
+  e.preventDefault();
+  const formData = new FormData(form);
+  const res = await fetch("/contact", {
+    method: "POST",
+    body: formData
+  });
+  console.log(await res.text());
+});
+  
   if (res.ok) {
     showToast("Message sent!");
     form.reset();
