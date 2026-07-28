@@ -590,7 +590,7 @@ document.getElementById("contactForm").addEventListener("submit", async (e) => {
   }
 
   // Submit to Cloudflare Forms
-  const res = await fetch("/cdn-cgi/forms/send", {
+  const res = await fetch("/contact", {
     method: "POST",
     body: formData
   });
