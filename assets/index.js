@@ -591,22 +591,22 @@ document.getElementById("contactForm").addEventListener("submit", async (e) => {
   }
 
   // Submit to Cloudflare Forms to your Worker
-  const res = await fetch("https://contact.jimothytracker.org", {
-    method: "POST",
-    body: formData,
-    headers: {
-      "Accept": "application/json"
+  try {
+    console.log("Starting fetch...");
+    const res = await fetch("https://contact.jimothytracker.org", {
+      method: "POST",
+      body: formData,
+      headers: { "Accept": "application/json" }
+    });
+    console.log("Fetch response:", res.status);
+    if (res.ok) {
+      showToast("Message sent!");
+      form.reset();
+      contactModal.classList.add("hidden");
+    } else {
+      showToast("Error sending message.");
     }
-  });
-
-
-  
-  if (res.ok) {
-    showToast("Message sent!");
-    form.reset();
-    contactModal.classList.add("hidden");
-  } else {
-    showToast("Error sending message.");
+  } catch (err) {
+    console.error("Fetch failed:", err);
+    showToast("Network error.");
   }
-});
-
