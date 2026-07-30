@@ -590,7 +590,7 @@ document.getElementById("contactForm").addEventListener("submit", async (e) => {
   }
 
   // Submit to Cloudflare Forms to your Worker
-  const res = await fetch("/contact", {
+  const res = await fetch("https://contact.jimothytracker.org", {
     method: "POST",
     body: formData
   });
