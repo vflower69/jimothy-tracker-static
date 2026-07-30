@@ -610,4 +610,4 @@ document.getElementById("contactForm").addEventListener("submit", async (e) => {
     console.error("Fetch failed:", err);
     showToast("Network error.");
   }
-}
+});
