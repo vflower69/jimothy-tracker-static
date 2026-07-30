@@ -563,10 +563,13 @@ closeContact.addEventListener("click", () => {
 function showToast(message) {
   toast.textContent = message;
   toast.style.opacity = "1";
+  toast.style.transform = "scale(1.05)";
   setTimeout(() => {
     toast.style.opacity = "0";
+    toast.style.transform = "scale(1)";
   }, 2500);
 }
+
 
 // Form submission
 document.getElementById("contactForm").addEventListener("submit", async (e) => {
