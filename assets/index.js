@@ -570,6 +570,7 @@ function showToast(message) {
 
 // Form submission
 document.getElementById("contactForm").addEventListener("submit", async (e) => {
+  console.log("ContactUs form submit triggered");
   e.preventDefault();
 
   const form = e.target;
