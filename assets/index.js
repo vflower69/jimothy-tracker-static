@@ -573,9 +573,14 @@ document.getElementById("contactForm").addEventListener("submit", async (e) => {
   console.log("ContactUs form submit triggered");
   e.preventDefault();
 
+  // Ensure modal is visible so FormData works
+  contactModal.classList.remove("hidden");
+  
   const form = e.target;
   const formData = new FormData(form);
 
+  console.log("Raw FormData:", [...formData.entries()]);
+  
   // Basic validation
   const email = formData.get("sender_email");
   const message = formData.get("message");
