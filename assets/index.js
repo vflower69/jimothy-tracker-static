@@ -569,7 +569,22 @@ function showToast(message) {
     toast.style.transform = "scale(1)";
   }, 2500);
 }
-
+function showToast(message, type = "info") {
+  const colors = {
+    info: "#34322d",
+    success: "#16a34a",
+    error: "#dc2626",
+    warning: "#f59e0b"
+  };
+  toast.style.backgroundColor = colors[type];
+  toast.textContent = message;
+  toast.style.opacity = "1";
+  toast.style.transform = "scale(1.05)";
+  setTimeout(() => {
+    toast.style.opacity = "0";
+    toast.style.transform = "scale(1)";
+  }, 2500);
+}
 
 // Form submission
 document.getElementById("contactForm").addEventListener("submit", async (e) => {
