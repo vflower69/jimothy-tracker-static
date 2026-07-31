@@ -560,6 +560,7 @@ closeContact.addEventListener("click", () => {
 });
 
 // Toast helper
+/*
 function showToast(message) {
   toast.textContent = message;
   toast.style.opacity = "1";
@@ -569,6 +570,7 @@ function showToast(message) {
     toast.style.transform = "scale(1)";
   }, 2500);
 }
+*/
 function showToast(message, type = "info") {
   const colors = {
     info: "#34322d",
