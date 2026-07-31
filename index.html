@@ -61,20 +61,19 @@
     <header class="flex flex-wrap items-center justify-between px-16 py-6 bg-gradient-to-b from-[#f8f8f7] to-[#f1f0ee] shadow-sm gap-4">
   
       <div class="flex items-center gap-3">
-        <h1 class="text-2xl font-serif text-[#34322d]"> 🦝 Jimothy the Raccoon Tracker</h1>
+        <h1 class="text-2xl font-serif text-[#34322d]">🦝 Jimothy the Raccoon Tracker</h1>
       </div>
   
       <nav class="flex items-center gap-8 text-sm font-medium text-[#34322d]">
         <a href="#map" class="hover:text-[#a64f3c]">Explore Map</a>
-        <a href="#journalList" class="hover:text-[#a64f3c]">Sighting Log</a>
-        <a href="#sightingForm" class="hover:text-[#a64f3c]">Report A Sighting</a>
+        <a href="#sightingList" class="hover:text-[#a64f3c]">Sighting List</a>
+        <a href="#sightingReportForm" class="hover:text-[#a64f3c]">Report A Sighting</a>
       </nav>
   
       <button id="contactUsBtn"
         class="px-4 py-2 bg-[#f1f0ee] text-black rounded-full hover:bg-[#e4e2df] cursor-pointer">
         <b>Contact Us</b>
       </button>
-
   
     </header>
 
@@ -171,7 +170,7 @@
       <h2 class="text-2xl font-semibold mb-4">Report A Sighting</h2>
     -->
         <div class="bg-white rounded-xl shadow p-4 h-[500px] overflow-y-auto">
-      <h2 class="text-2xl font-semibold mb-4">Report A Sighting</h2>
+      <h2 id="sightingReportForm" class="text-2xl font-semibold mb-4">Report A Sighting</h2>
       <form id="sightingForm" class="space-y-4">
   
         <!-- Location -->
@@ -215,7 +214,7 @@
       <h2 class="text-2xl font-semibold mb-4">Sightings</h2>
     -->
       <div class="bg-white rounded-xl shadow p-4 h-[500px] flex flex-col">
-        <h2 class="text-2xl font-semibold mb-4 flex-shrink-0">Sightings</h2>
+        <h2 id="sightingList class="text-2xl font-semibold mb-4 flex-shrink-0">Sightings</h2>
         
       <div id="journalError" class="hidden p-4 bg-red-100 rounded">
         The field journal needs a moment. Public sightings could not be loaded just now.
