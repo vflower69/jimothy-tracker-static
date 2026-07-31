@@ -264,10 +264,10 @@ document.getElementById("toggleAllSightings").onclick = () => {
   showingAll = !showingAll;
 
   if (showingAll) {
-    document.getElementById("toggleAllSightings").innerText = "Show paginated sightings";
+    document.getElementById("toggleAllSightings").innerText = "Show Paginated Sightings On Map";
     drawAllMarkers();
   } else {
-    document.getElementById("toggleAllSightings").innerText = "Show all sightings";
+    document.getElementById("toggleAllSightings").innerText = "Show All Sightings On Map";
     renderJournalPage(); // returns to paginated markers
   }
 };
