@@ -604,12 +604,16 @@ document.getElementById("contactForm").addEventListener("submit", async (e) => {
   const message = formData.get("message");
 
   if (!email || !email.includes("@")) {
-    showToast("Please enter a valid email.");
+    //showToast("Please enter a valid email.");
+    showToast("Please enter a valid email.", "error");
+
     return;
   }
 
   if (!message || message.length < 5) {
-    showToast("Message is too short.");
+    //showToast("Message is too short.");
+    showToast("Message is too short.", "error");
+
     return;
   }
 
@@ -623,14 +627,17 @@ document.getElementById("contactForm").addEventListener("submit", async (e) => {
     });
     console.log("Fetch response:", res.status);
     if (res.ok) {
-      showToast("Message sent!");
+      //showToast("Message sent!");
+      showToast("Message sent!", "success");
       form.reset();
       contactModal.classList.add("hidden");
     } else {
-      showToast("Error sending message.");
+      //showToast("Error sending message.");
+      showToast("Error sending message.", "error");
     }
   } catch (err) {
     console.error("Fetch failed:", err);
-    showToast("Network error.");
+    //showToast("Network error.");
+    showToast("Network error.", "error");
   }
 });
