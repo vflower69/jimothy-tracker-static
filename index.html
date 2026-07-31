@@ -153,7 +153,14 @@
 
       <!-- Field Journal: Sightings list -->
       <div class="bg-white rounded-xl shadow p-2 h-[500px] flex flex-col">
-        <h2 id="sightingList" class="text-2xl font-semibold py-6 mb-4 flex-shrink-0">Sightings</h2>
+        <div class="flex items-center justify-between py-6 mb-4 flex-shrink-0">
+          <h2 id="sightingList" class="text-2xl font-semibold">Sightings</h2>
+      
+          <button id="toggleAllSightings"
+            class="px-4 py-2 bg-[#34322d] text-white rounded">
+            Show All Sightings
+          </button>
+        </div>
         <div id="journalError" class="hidden p-4 bg-red-100 rounded">
           The field journal needs a moment. Public sightings could not be loaded just now.
           <button id="reloadJournal" class="underline ml-2">Reload sightings</button>
