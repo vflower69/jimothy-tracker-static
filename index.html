@@ -121,7 +121,7 @@
     <section class="px-8 py-10 max-w-6xl mx-auto">
       <div class="grid grid-cols-1 md:grid-cols-2 gap-4 items-start">
       <!-- Report a sighting Form -->
-      <div class="bg-white rounded-xl shadow p-4 h-[500px] overflow-y-auto">
+      <div class="bg-white rounded-xl shadow p-2 h-[500px] overflow-y-auto">
       <h2 id="sightingReportForm" class="text-2xl font-semibold py-6 mb-4">Report A Sighting</h2>
       <form id="sightingForm" class="space-y-4">
         <!-- Location -->
@@ -152,37 +152,28 @@
       </div>
 
       <!-- Field Journal: Sightings list -->
-      <div class="bg-white rounded-xl shadow p-4 h-[500px] flex flex-col">
-        <h2 id="sightingList" class="text-2xl font-semibold mb-4 flex-shrink-0">Sightings</h2>
-        
-      <div id="journalError" class="hidden p-4 bg-red-100 rounded">
-        The field journal needs a moment. Public sightings could not be loaded just now.
-        <button id="reloadJournal" class="underline ml-2">Reload sightings</button>
+      <div class="bg-white rounded-xl shadow p-2 h-[500px] flex flex-col">
+        <h2 id="sightingList" class="text-2xl font-semibold py-6 mb-4 flex-shrink-0">Sightings</h2>
+        <div id="journalError" class="hidden p-4 bg-red-100 rounded">
+          The field journal needs a moment. Public sightings could not be loaded just now.
+          <button id="reloadJournal" class="underline ml-2">Reload sightings</button>
+        </div>    
+        <!-- see function loadJournal() from the assets/index.js for populating the items list -->
+        <!-- Scrollable list -->
+        <div class="flex-grow overflow-y-auto">
+          <ul id="journalList" class="space-y-2"></ul>
+        </div>
+        <!-- Pagination outside scroll -->
+        <div id="journalPagination" class="mt-3 flex items-center gap-4 justify-center flex-shrink-0"></div>
+        <button id="toggleAllSightings"
+            class="mt-3 px-4 py-2 bg-[#34322d] text-white rounded flex-shrink-0">
+          Show All Sightings
+        </button>
       </div>
-        
-      <!-- see function loadJournal() from the assets/index.js for populating the items list -->
-      <!-- Scrollable list -->
-      <div class="flex-grow overflow-y-auto">
-        <ul id="journalList" class="space-y-2"></ul>
-      </div>
-
-      <!-- Pagination outside scroll -->
-      <div id="journalPagination" class="mt-3 flex items-center gap-4 justify-center flex-shrink-0"></div>
-  
-      <button id="toggleAllSightings"
-          class="mt-3 px-4 py-2 bg-[#34322d] text-white rounded flex-shrink-0">
-        Show All Sightings
-      </button>
-      </div>
-  </div>
-
+    </div>
     </section>
 
-    <footer class="mt-16 px-8 py-6 bg-[#f9f8f6] border-t border-[#d8d6d3] text-center shadow-inner">
-      <!-- div class="font-serif text-xl text-[#34322d] mb-2">
-        Jimothy the Raccoon Tracker
-    </div -->
-    
+    <footer class="mt-16 px-8 py-4 bg-[#f9f8f6] border-t border-[#d8d6d3] text-center shadow-inner">
       <div class="text-[#34322d] text-lg mb-1">
         There are
         <!-- Rounded meter box with a faint border and shadow — like an electric meter window -->
@@ -192,7 +183,6 @@
         </span>
         visitors to this Web site currently.
       </div>
-    
       <div class="text-sm text-[#55524d] italic mt-2">
         A public field journal for curious, respectful neighbors.
       </div>
