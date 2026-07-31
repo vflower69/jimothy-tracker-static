@@ -2,7 +2,7 @@
 // CONFIG VARS
 // ------------------------------
 const GITHUB_USER = "vflower69";
-const GITHUB_REPO = "jimothy-tracker-static";
+const GITHUB_REPO = "jts";
 const GITHUB_FILE_PATH = "data/jimothy.json";
 
 let map;
