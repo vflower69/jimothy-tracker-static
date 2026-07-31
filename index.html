@@ -13,12 +13,30 @@
       href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Manrope:wght@400;500;600;700;800&display=swap"
       rel="stylesheet"
     />
-    <title>Jimothy the Raccoon Tracker</title>
+  
     <!-- ⭐ Add Tailwind CDN here -->
     <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- ⭐ Tailwind config (place it immediately AFTER the CDN) -->
+    <!-- override Tailwind’s spacing scale in your HTML using CDN config: -->
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            spacing: {
+              12: "2rem",   // instead of 3rem
+              16: "2.5rem", // instead of 4rem
+            }
+          }
+        }
+      }
+    </script>
+    
+    <title>Jimothy the Raccoon Tracker</title>
     <!-- link rel="stylesheet" crossorigin href="/assets/index-Cg66F2qH.css" -->
     <script type="module" src="/assets/index.js"></script>
-
+    
+    <!-- Google Maps -->
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAlxVpnD3O24HnHep4J4gwWZCHqKG7uewk&libraries=places&callback=initMap" defer></script>
 
     <!-- Not needed -->
