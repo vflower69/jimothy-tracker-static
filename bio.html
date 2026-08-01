@@ -12,8 +12,114 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-</head>
 
+  <!-- Begin of under construction need -->
+  <style>
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #0f172a;
+      color: #e5e7eb;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+    }
+
+    .construction-wrapper {
+      text-align: center;
+    }
+
+    .construction-sign {
+      display: inline-block;
+      padding: 1.5rem 2.5rem;
+      border-radius: 0.75rem;
+      background: #f97316;
+      color: #111827;
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.35);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .construction-sign::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image: repeating-linear-gradient(
+        -45deg,
+        rgba(0, 0, 0, 0.25) 0,
+        rgba(0, 0, 0, 0.25) 10px,
+        transparent 10px,
+        transparent 20px
+      );
+      opacity: 0.6;
+      mix-blend-mode: multiply;
+      animation: stripes 1.2s linear infinite;
+      pointer-events: none;
+    }
+
+    @keyframes stripes {
+      from {
+        transform: translateX(0);
+      }
+      to {
+        transform: translateX(-20px);
+      }
+    }
+
+    .construction-title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      position: relative;
+      z-index: 1;
+    }
+
+    .construction-text {
+      margin-top: 0.5rem;
+      font-size: 0.95rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .blinking-dot {
+      display: inline-block;
+      width: 0.5rem;
+      height: 0.5rem;
+      border-radius: 999px;
+      background: #111827;
+      margin-left: 0.35rem;
+      animation: blink 0.9s ease-in-out infinite;
+    }
+
+    @keyframes blink {
+      0%, 100% {
+        opacity: 0.2;
+        transform: scale(0.9);
+      }
+      50% {
+        opacity: 1;
+        transform: scale(1.1);
+      }
+    }
+
+    .back-link {
+      margin-top: 1.5rem;
+      display: inline-block;
+      font-size: 0.9rem;
+      color: #9ca3af;
+      text-decoration: none;
+      border-bottom: 1px dashed #4b5563;
+    }
+
+    .back-link:hover {
+      color: #e5e7eb;
+      border-bottom-color: #e5e7eb;
+    }
+  </style>
+  <!-- End of under construction need -->
+</head>
 <body class="font-sans bg-[#f8f8f7] text-[#34322d]">
 
   <!-- Header -->
@@ -27,7 +133,15 @@
       <a href="/#sightingReportForm" class="hover:text-[#a64f3c]">Report A Sighting</a>
     </nav>
   </header>
-
+  <div class="construction-sign">
+    <div class="construction-title">
+      🚧 Page Under Construction 🚧
+    </div>
+    <div class="construction-text">
+      I’m still working on this bio. Check back soon
+      <span class="blinking-dot"></span>
+    </div>
+  </div>
   <!-- Main Content -->
   <main class="px-16 py-10 max-w-4xl mx-auto">
     <section class="mb-10">
