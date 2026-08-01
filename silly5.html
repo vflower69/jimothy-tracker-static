@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Silly Physics — Bouncing Jimothy</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    body {
+      background: #0f172a;
+      margin: 0;
+      overflow: hidden;
+    }
+
+    #jimothy {
+      position: absolute;
+      font-size: 5rem;
+    }
+  </style>
+</head>
+<body>
+
+  <div id="jimothy">🦝</div>
+
+  <script>
+    const jimothy = document.getElementById("jimothy");
+
+    let x = 100;
+    let y = 100;
+    let vx = 4;
+    let vy = 3;
+
+    function animate() {
+      x += vx;
+      y += vy;
+
+      if (x < 0 || x > window.innerWidth - 80) vx *= -1;
+      if (y < 0 || y > window.innerHeight - 80) vy *= -1;
+
+      jimothy.style.left = x + "px";
+      jimothy.style.top = y + "px";
+
+      requestAnimationFrame(animate);
+    }
+
+    animate();
+  </script>
+
+</body>
+</html>

@@ -7,17 +7,35 @@
       name="description"
       content="A welcoming public map and field journal for sightings of Jimothy the raccoon."
     />
+    <meta name="google-site-verification" content="9sKX8uRhLf-wPf8iiLewiTNOBIrsoK9ooLcAMrA-giE" />
+    <!-- Begin SEO additions -->
+    <meta name="keywords" content="Jimothy, Jimothy the raccoon, raccoon Jimothy, Jimothy tracker, raccoon tracker, Jimothy the raccoon tracker, Jimothy raccoon tracker, raccoon Jimothy tracker, Jimothy sightings, Jimothy map, where is Jimothy, where is Jimothy the raccoon, who is Jimothy, who is Jimothy the raccoon" />
+    <meta property="og:title" content="Jimothy the Raccoon Tracker" />
+    <meta property="og:description" content="Track Jimothy the Raccoon with live sightings, maps, and community reports." />
+    <meta property="og:url" content="https://jimothytracker.org" />
+    <meta property="og:type" content="website" />
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Website",
+      "name": "Jimothy the Raccoon Tracker",
+      "url": "https://jimothytracker.org",
+      "description": "Track Jimothy the Raccoon with live sightings, maps, and community reports.",
+      "keywords": "Jimothy, Jimothy the raccoon, raccoon Jimothy, Jimothy tracker, raccoon tracker, Jimothy the raccoon tracker, Jimothy raccoon tracker, raccoon Jimothy tracker, Jimothy sightings, Jimothy map, where is Jimothy, where is Jimothy the raccoon, who is Jimothy, who is Jimothy the raccoon"
+    }
+    </script>
+    <!-- End SEO additions -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Manrope:wght@400;500;600;700;800&display=swap"
       rel="stylesheet"
-    />f
+    />
   
-    <!-- ⭐ Add Tailwind CDN here -->
+    <!-- ⭐ Add Tailwind CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     
-    <!-- ⭐ Tailwind config (place it immediately AFTER the CDN) -->
+    <!-- Tailwind config (place it immediately AFTER the CDN) -->
     <!-- override Tailwind’s spacing scale in your HTML using CDN config: -->
     <script>
       tailwind.config = {
@@ -53,6 +71,8 @@
         <a href="#whereHasJimothyBeen" class="hover:text-[#a64f3c]">Explore Map</a>
         <a href="#sightingList" class="hover:text-[#a64f3c]">Sighting List</a>
         <a href="#sightingReportForm" class="hover:text-[#a64f3c]">Report A Sighting</a>
+        <!-- a href="/gallery" class="hover:text-[#a64f3c]">Gallery</a -->
+        <a href="/games" class="hover:text-[#a64f3c]">Games</a>
       </nav>
       <button id="contactUsBtn"
         class="px-4 py-2 bg-[#f1f0ee] text-black rounded-full hover:bg-[#e4e2df] cursor-pointer">
@@ -98,14 +118,23 @@
           <h3 class="text-xl font-semibold mb-3">Seattle’s Little Wanderer</h3>
           <!-- Static Jimothy Image -->
           <img src="/assets/jimothyT3.png"
-           alt="Jimothy the raccoon"
+           alt="Jimothy the raccoon exploring Seattle Ballard"
            class="w-full h-64 object-cover rounded-lg shadow-sm mb-2">
           <p class="text-sm text-[#55524d] mb-4 flex-grow">
-            <b>Jimothy the raccoon</b> is a uniquely proportioned Seattle local, often spotted around the Ballard Locks. His short neck, rounded torso, and long legs caught public attention after a video of him roaming outdoors went viral in mid‑July 2026. Since then, neighbors have reported frequent sightings of Jimothy exploring the Ballard Locks area and its surrounding green spaces.
+            <a href="/bio" class="font-bold underline decoration-amber-700 decoration-2 underline-offset-2 transition-all duration-300 hover:text-[#a64f3c] hover:decoration-[#a64f3c]">
+    Jimothy the raccoon</a> is a uniquely proportioned Seattle local, often spotted around the Ballard. His short neck, rounded torso, and long legs caught public attention after a video of him roaming outdoors went viral in mid‑July 2026. Since then, neighbors have reported frequent sightings of Jimothy exploring the Ballard area and its surrounding green spaces.
           </p>
-          <a href="#sightingList"
-             class="inline-block px-4 py-2 bg-amber-700 text-white rounded-full hover:bg-amber-800 mt-auto items-center">
-            View Recent Sightings
+          <!--
+          <div class="text-center">
+            <a href="#sightingList"
+               class="inline-block px-4 py-2 bg-amber-700 text-white rounded-full hover:bg-amber-800">
+              View Recent Sightings
+            </a>
+          </div>
+          -->
+          <a href="/sightings"
+             class="block text-center px-4 py-2 bg-amber-700 text-white rounded-full hover:bg-amber-800">
+            Browse Detailed Jimothy Sighting History On The Tracker
           </a>
         </div>
       </div>
@@ -141,7 +170,7 @@
         </div>
         <div class="flex items-center gap-3 mt-2">
           <button onclick="submitFormSighting()" type="submit"
-                  class="px-4 py-2 bg-blue-600 text-white rounded flex-shrink-0">
+                  class="px-4 py-2 bg-blue-800 hover:bg-blue-900 text-white rounded transition-colors flex-shrink-0">
             Submit Sighting
           </button>   
           <p class="text-xs text-[#858481]">
@@ -162,7 +191,7 @@
         </div>
         <div id="journalError" class="hidden p-4 bg-red-100 rounded">
           The field journal needs a moment. Public sightings could not be loaded just now.
-          <button id="reloadJournal" class="underline ml-2">Reload sightings</button>
+          <button id="reloadJournal" class="underline ml-2">Reload Sightings</button>
         </div>    
         <!-- see function loadJournal() from the assets/index.js for populating the items list -->
         <!-- Scrollable list -->

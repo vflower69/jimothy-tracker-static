@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Jimothy Martial Arts</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    body {
+      background: #0f172a;
+      margin: 0;
+      overflow: hidden;
+      font-family: system-ui, sans-serif;
+      color: #e5e7eb;
+      text-align: center;
+    }
+
+    #jimothy {
+      position: absolute;
+      font-size: 6rem;
+      left: 20px;
+      bottom: 40px;
+      transition: transform 0.2s ease;
+    }
+
+    #message {
+      margin-top: 1rem;
+      font-size: 1.2rem;
+      color: #9ca3af;
+    }
+
+    /* Running animation */
+    @keyframes run {
+      0% { transform: translateX(0) rotate(0deg); }
+      25% { transform: translateX(200px) rotate(10deg); }
+      50% { transform: translateX(400px) rotate(-10deg); }
+      75% { transform: translateX(600px) rotate(5deg); }
+      100% { transform: translateX(800px) rotate(0deg); }
+    }
+
+    /* Jump animation */
+    @keyframes jump {
+      0% { transform: translateY(0); }
+      50% { transform: translateY(-180px); }
+      100% { transform: translateY(0); }
+    }
+
+    /* Spin kick */
+    @keyframes spinKick {
+      0% { transform: rotate(0deg) scale(1); }
+      50% { transform: rotate(360deg) scale(1.3); }
+      100% { transform: rotate(720deg) scale(1); }
+    }
+
+    /* Fart cloud */
+    .fart {
+      position: absolute;
+      font-size: 3rem;
+      opacity: 0;
+      animation: fartCloud 1.5s forwards;
+    }
+
+    @keyframes fartCloud {
+      0% { opacity: 0; transform: translateX(0) scale(0.5); }
+      50% { opacity: 1; transform: translateX(-40px) scale(1.2); }
+      100% { opacity: 0; transform: translateX(-80px) scale(0.8); }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="message">Click Jimothy to begin his martial arts routine.</div>
+  <div id="jimothy">🦝🥋</div>
+
+  <script>
+    const jimothy = document.getElementById("jimothy");
+    const message = document.getElementById("message");
+
+    jimothy.addEventListener("click", async () => {
+      message.textContent = "Jimothy begins his martial arts routine…";
+
+      // RUN
+      jimothy.style.animation = "run 1.5s linear forwards";
+      await wait(1500);
+
+      // JUMP
+      jimothy.style.animation = "jump 1s ease-in-out";
+      await wait(1000);
+
+      // SPIN KICK
+      jimothy.style.animation = "spinKick 1.2s ease-in-out";
+      await wait(1200);
+
+      // STOP ANIMATION
+      jimothy.style.animation = "";
+      await wait(300);
+
+      // FART
+      const fart = document.createElement("div");
+      fart.className = "fart";
+      fart.textContent = "💨";
+      fart.style.left = jimothy.offsetLeft + "px";
+      fart.style.top = jimothy.offsetTop + "px";
+      document.body.appendChild(fart);
+
+      message.textContent = "Jimothy… farted.";
+
+      await wait(1500);
+
+      // EMBARRASSED FACE
+      jimothy.textContent = "🦝😳";
+      message.textContent = "Jimothy is embarrassed.";
+    });
+
+    function wait(ms) {
+      return new Promise(resolve => setTimeout(resolve, ms));
+    }
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Silly Jimothy 2 — Particle Chaos</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    body {
+      background: #0f172a;
+      color: #e5e7eb;
+      font-family: system-ui, sans-serif;
+      margin: 0;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      text-align: center;
+    }
+
+    #jimothy {
+      font-size: 5rem;
+      cursor: pointer;
+    }
+
+    #message {
+      margin-top: 1rem;
+      color: #9ca3af;
+    }
+
+    .particle {
+      position: absolute;
+      font-size: 2rem;
+      animation: explode 1s linear forwards;
+    }
+
+    @keyframes explode {
+      from { transform: translate(0,0) scale(1); opacity: 1; }
+      to {
+        transform: translate(
+          calc(200px - 400px * var(--rx)),
+          calc(200px - 400px * var(--ry))
+        ) scale(0.2);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="jimothy">🦝</div>
+  <div id="message">Click Jimothy to unleash particle chaos.</div>
+
+  <script>
+    const jimothy = document.getElementById("jimothy");
+    const message = document.getElementById("message");
+
+    jimothy.addEventListener("click", () => {
+      message.textContent = "CHAOS MODE ACTIVATED";
+
+      for (let i = 0; i < 40; i++) {
+        const p = document.createElement("div");
+        p.className = "particle";
+        p.textContent = "🦝";
+
+        p.style.left = jimothy.offsetLeft + "px";
+        p.style.top = jimothy.offsetTop + "px";
+
+        p.style.setProperty("--rx", Math.random());
+        p.style.setProperty("--ry", Math.random());
+
+        document.body.appendChild(p);
+
+        setTimeout(() => p.remove(), 1000);
+      }
+    });
+  </script>
+
+</body>
+</html>

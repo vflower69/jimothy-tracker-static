@@ -54,12 +54,17 @@ function drawPageMarkers(pageItems) {
 function drawAllMarkers() {
   clearMapMarkers();
 
+  const bounds = new google.maps.LatLngBounds();
+
   const markers = allLocations.map(loc => {
-    return new google.maps.Marker({
+    const marker = new google.maps.Marker({
       position: { lat: loc.lat, lng: loc.lng },
       map,
       label: "J"
     });
+
+    bounds.extend(marker.getPosition());
+    return marker;
   });
 
   mapMarkers = markers;
@@ -69,7 +74,13 @@ function drawAllMarkers() {
     map, 
     markers 
   });
+
+  // Auto-fit map to all markers
+  if (!bounds.isEmpty()) {
+    map.fitBounds(bounds);
+  }
 }
+
 
 // ------------------------------
 // GOOGLE MAP INIT
@@ -224,6 +235,7 @@ function renderJournalPagination() {
       currentPage--;
       renderJournalPage();
       document.getElementById("toggleAllSightings").innerText = "Show All Sightings On Map";
+      showingAll=false;
     }
   };
 
@@ -232,6 +244,7 @@ function renderJournalPagination() {
       currentPage++;
       renderJournalPage();
       document.getElementById("toggleAllSightings").innerText = "Show All Sightings On Map";
+      showingAll=false;
     }
   };
 }

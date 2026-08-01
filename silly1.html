@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Jimothy Silly Animation</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    body {
+      background: #0f172a;
+      color: #e5e7eb;
+      font-family: system-ui, sans-serif;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      overflow: hidden;
+      text-align: center;
+    }
+
+    h1 {
+      margin-bottom: 1rem;
+      font-size: 2rem;
+    }
+
+    #jimothy {
+      font-size: 6rem;
+      display: inline-block;
+      transition: transform 0.2s ease;
+    }
+
+    #message {
+      margin-top: 1.5rem;
+      font-size: 1.2rem;
+      color: #9ca3af;
+      min-height: 2rem;
+    }
+
+    /* Silly animation keyframes */
+    @keyframes sillyDance {
+      0%   { transform: rotate(0deg) scale(1); }
+      20%  { transform: rotate(20deg) scale(1.2); }
+      40%  { transform: rotate(-20deg) scale(0.9); }
+      60%  { transform: translateY(-20px) rotate(10deg); }
+      80%  { transform: translateY(20px) rotate(-10deg); }
+      100% { transform: rotate(0deg) scale(1); }
+    }
+
+    .animate {
+      animation: sillyDance 0.5s infinite;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Jimothy’s 5‑Second Silly Mode</h1>
+
+  <div id="jimothy">🦝</div>
+
+  <div id="message">Click to begin silliness.</div>
+
+  <script>
+    const jimothy = document.getElementById("jimothy");
+    const message = document.getElementById("message");
+
+    let running = false;
+
+    function startSilly() {
+      if (running) return;
+      running = true;
+
+      message.textContent = "Jimothy is being extremely silly...";
+      jimothy.classList.add("animate");
+
+      setTimeout(() => {
+        jimothy.classList.remove("animate");
+        message.textContent = "Jimothy has completed his silliness.";
+        running = false;
+      }, 5000);
+    }
+
+    jimothy.addEventListener("click", startSilly);
+  </script>
+
+</body>
+</html>

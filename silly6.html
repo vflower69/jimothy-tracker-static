@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Silly Battle — Jimothy vs Trash Cans</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    body {
+      background: #0f172a;
+      margin: 0;
+      overflow: hidden;
+      font-family: system-ui, sans-serif;
+    }
+
+    #jimothy {
+      position: absolute;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 5rem;
+      cursor: pointer;
+    }
+
+    .trash {
+      position: absolute;
+      font-size: 3rem;
+      top: -50px;
+      animation: fall 4s linear infinite;
+    }
+
+    @keyframes fall {
+      from { top: -50px; }
+      to { top: 110vh; }
+    }
+
+    .blast {
+      position: absolute;
+      font-size: 2rem;
+      animation: shoot 1s linear forwards;
+    }
+
+    @keyframes shoot {
+      from { transform: translateY(0); }
+      to { transform: translateY(-100vh); }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="jimothy">🦝</div>
+
+  <script>
+    const jimothy = document.getElementById("jimothy");
+
+    function spawnTrash() {
+      const t = document.createElement("div");
+      t.className = "trash";
+      t.textContent = "🗑️";
+      t.style.left = Math.random() * window.innerWidth + "px";
+      document.body.appendChild(t);
+
+      setTimeout(() => t.remove(), 4000);
+    }
+
+    setInterval(spawnTrash, 800);
+
+    jimothy.addEventListener("click", () => {
+      const b = document.createElement("div");
+      b.className = "blast";
+      b.textContent = "✨";
+
+      b.style.left = jimothy.offsetLeft + 30 + "px";
+      b.style.top = jimothy.offsetTop + "px";
+
+      document.body.appendChild(b);
+
+      setTimeout(() => b.remove(), 1000);
+    });
+  </script>
+
+</body>
+</html>
