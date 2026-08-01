@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Silly Music — Jimothy Sounds</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    body {
+      background: #0f172a;
+      color: #e5e7eb;
+      font-family: system-ui, sans-serif;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      text-align: center;
+    }
+
+    #jimothy {
+      font-size: 6rem;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <div id="jimothy">🦝</div>
+  <div>Click Jimothy for goofy raccoon sounds.</div>
+
+  <script>
+    const jimothy = document.getElementById("jimothy");
+
+    const sounds = [
+      new Audio("data:audio/wav;base64,UklGRiQAAABXQVZFZm10IBAAAAABAAEAESsAACJWAAACABAAZGF0YQAAAAA="),
+      new Audio("data:audio/wav;base64,UklGRiQAAABXQVZFZm10IBAAAAABAAEAESsAACJWAAACABAAZGF0YQAAAAA=")
+    ];
+
+    jimothy.addEventListener("click", () => {
+      const s = sounds[Math.floor(Math.random() * sounds.length)];
+      s.play();
+    });
+  </script>
+
+</body>
+</html>
