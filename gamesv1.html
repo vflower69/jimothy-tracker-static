@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Jimothy Retro Arcade</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Retro Pixel Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      background: #000;
+      color: #00ffcc;
+      font-family: "Press Start 2P", monospace;
+      margin: 0;
+      padding: 0;
+      text-align: center;
+      overflow-x: hidden;
+    }
+
+    /* CRT Scanline Effect */
+    body::after {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background: repeating-linear-gradient(
+        to bottom,
+        rgba(255,255,255,0.03),
+        rgba(255,255,255,0.03) 2px,
+        transparent 2px,
+        transparent 4px
+      );
+      pointer-events: none;
+      z-index: 999;
+    }
+
+    header {
+      padding: 2rem 1rem 1rem;
+      text-shadow: 0 0 10px #00ffcc;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 2rem;
+    }
+
+    p.subtitle {
+      margin: 1rem 0 2rem;
+      color: #66ffe0;
+      font-size: 0.8rem;
+    }
+
+    /* Grid */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 1.5rem;
+      padding: 1rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    /* Game Card */
+    .card {
+      background: #111;
+      border: 3px solid #00ffcc;
+      padding: 1.5rem;
+      border-radius: 0.5rem;
+      box-shadow: 0 0 20px #00ffcc;
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+      position: relative;
+      transform-style: preserve-3d;
+    }
+
+    .card:hover {
+      transform: rotateY(180deg);
+      box-shadow: 0 0 30px #00ffee;
+    }
+
+    .card h2 {
+      margin: 0 0 0.5rem;
+      font-size: 1rem;
+    }
+
+    .card p {
+      margin: 0 0 1rem;
+      color: #99ffee;
+      font-size: 0.7rem;
+      line-height: 1.4;
+    }
+
+    .difficulty {
+      margin-bottom: 1rem;
+      font-size: 0.7rem;
+      color: #ff66aa;
+    }
+
+    .card a {
+      display: inline-block;
+      padding: 0.5rem 1rem;
+      background: #00ffcc;
+      color: #000;
+      font-weight: bold;
+      border-radius: 5px;
+      text-decoration: none;
+      transition: background 0.1s ease;
+    }
+
+    .card a:hover {
+      background: #00ffee;
+    }
+
+    /* Jimothy Runner */
+    #runner {
+      position: absolute;
+      font-size: 3rem;
+      transition: left 0.4s ease, top 0.4s ease;
+      pointer-events: none;
+      z-index: 50;
+      text-shadow: 0 0 10px #fff;
+    }
+
+    /* Surprise Me Button */
+    #surprise {
+      margin: 2rem auto;
+      padding: 1rem 2rem;
+      background: #ff66aa;
+      color: #000;
+      border-radius: 10px;
+      font-size: 0.9rem;
+      cursor: pointer;
+      display: inline-block;
+      box-shadow: 0 0 20px #ff66aa;
+      transition: transform 0.15s ease;
+    }
+
+    #surprise:hover {
+      transform: scale(1.1);
+    }
+
+    /* Leaderboard */
+    #leaderboard {
+      margin-top: 2rem;
+      padding: 1rem;
+      background: #111;
+      border: 3px solid #00ffcc;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+      box-shadow: 0 0 20px #00ffcc;
+    }
+
+    #leaderboard h2 {
+      font-size: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    #leaderboard ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      font-size: 0.8rem;
+      color: #66ffe0;
+    }
+
+    footer {
+      margin-top: 2rem;
+      padding: 1rem;
+      color: #66ffe0;
+      font-size: 0.7rem;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Jimothy Retro Arcade</h1>
+    <p class="subtitle">SELECT YOUR CHAOS!</p>
+  </header>
+
+  <!-- Jimothy Runner -->
+  <div id="runner">🦝</div>
+
+  <!-- Surprise Me Button -->
+  <div id="surprise">🎲 Surprise Me!</div>
+
+  <main class="grid">
+
+    <!-- GAME CARDS -->
+    <div class="card" data-link="games/silly.html">
+      <h2>Jimothy Silly</h2>
+      <p>5‑second silly animation.</p>
+      <div class="difficulty">Difficulty: ⭐</div>
+      <a href="games/silly.html">Play</a>
+    </div>
+
+    <div class="card" data-link="games/silly2.html">
+      <h2>Particle Chaos</h2>
+      <p>Jimothy explodes into raccoon particles.</p>
+      <div class="difficulty">Difficulty: ⭐⭐</div>
+      <a href="games/silly2.html">Play</a>
+    </div>
+
+    <div class="card" data-link="games/silly-deluxe.html">
+      <h2>Silly Deluxe</h2>
+      <p>Jimothy multiplies into 20 raccoons.</p>
+      <div class="difficulty">Difficulty: ⭐⭐</div>
+      <a href="games/silly-deluxe.html">Play</a>
+    </div>
+
+    <div class="card" data-link="games/silly-music.html">
+      <h2>Silly Music</h2>
+      <p>Jimothy makes goofy sounds.</p>
+      <div class="difficulty">Difficulty: ⭐</div>
+      <a href="games/silly-music.html">Play</a>
+    </div>
+
+    <div class="card" data-link="games/silly-physics.html">
+      <h2>Silly Physics</h2>
+      <p>Jimothy bounces around the screen.</p>
+      <div class="difficulty">Difficulty: ⭐⭐⭐</div>
+      <a href="games/silly-physics.html">Play</a>
+    </div>
+
+    <div class="card" data-link="games/silly-portal.html">
+      <h2>Silly Portal</h2>
+      <p>Jimothy teleports like a raccoon wizard.</p>
+      <div class="difficulty">Difficulty: ⭐⭐⭐</div>
+      <a href="games/silly-portal.html">Play</a>
+    </div>
+
+    <div class="card" data-link="games/silly-battle.html">
+      <h2>Silly Battle</h2>
+      <p>Jimothy fights evil trash cans.</p>
+      <div class="difficulty">Difficulty: ⭐⭐⭐⭐</div>
+      <a href="games/silly-battle.html">Play</a>
+    </div>
+
+    <div class="card" data-link="games/silly-3d.html">
+      <h2>Silly 3D</h2>
+      <p>Fake 3D raccoon hologram.</p>
+      <div class="difficulty">Difficulty: ⭐⭐</div>
+      <a href="games/silly-3d.html">Play</a>
+    </div>
+
+    <div class="card" data-link="games/silly-ai.html">
+      <h2>Silly AI</h2>
+      <p>Jimothy reacts to your text input.</p>
+      <div class="difficulty">Difficulty: ⭐⭐⭐</div>
+      <a href="games/silly-ai.html">Play</a>
+    </div>
+
+    <div class="card" data-link="games/jimothy-martial-arts.html">
+      <h2>Martial Arts Jimothy</h2>
+      <p>Runs, jumps, spin‑kicks… then farts.</p>
+      <div class="difficulty">Difficulty: ⭐⭐⭐⭐</div>
+      <a href="games/jimothy-martial-arts.html">Play</a>
+    </div>
+
+    <div class="card" data-link="games/bossfight.html">
+      <h2>Boss Fight</h2>
+      <p>Jimothy vs Mega Trash Titan.</p>
+      <div class="difficulty">Difficulty: ⭐⭐⭐⭐⭐</div>
+      <a href="games/bossfight.html">Play</a>
+    </div>
+
+  </main>
+
+  <!-- Leaderboard -->
+  <div id="leaderboard">
+    <h2>High Scores</h2>
+    <ul id="scores"></ul>
+  </div>
+
+  <footer>
+    Jimothy approves this retro arcade and denies responsibility for excessive laughter.
+  </footer>
+
+  <script>
+    const runner = document.getElementById("runner");
+    const cards = document.querySelectorAll(".card");
+    const surprise = document.getElementById("surprise");
+    const scoresList = document.getElementById("scores");
+
+    const hoverSound = new Audio("data:audio/wav;base64,UklGRiQAAABXQVZFZm10IBAAAAABAAEAESsAACJWAAACABAAZGF0YQAAAAA=");
+    const announcer = new Audio("data:audio/wav;base64,UklGRiQAAABXQVZFZm10IBAAAAABAAEAESsAACJWAAACABAAZGF0YQAAAAA=");
+
+    announcer.play();
+
+    // Jimothy runs to hovered card + sound
+    cards.forEach(card => {
+      card.addEventListener("mouseenter", () => {
+        const rect = card.getBoundingClientRect();
+        runner.style.left = rect.left + rect.width / 2 + "px";
+        runner.style.top = rect.top - 40 + "px";
+        hoverSound.play();
+      });
+    });
+
+    // Surprise Me button
+    surprise.addEventListener("click", () => {
+      const randomCard = cards[Math.floor(Math.random() * cards.length)];
+      window.location.href = randomCard.dataset.link;
+    });
+
+    // Load leaderboard
+    const savedScores = JSON.parse(localStorage.getItem("jimothyScores") || "[]");
+    savedScores.forEach(score => {
+      const li = document.createElement("li");
+      li.textContent = score;
+      scoresList.appendChild(li);
+    });
+  </script>
+
+</body>
+</html>
