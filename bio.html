@@ -13,7 +13,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
 
-  <!-- Begin of under construction need -->
+  <!-- Begin of under construction need - moving lines -->
   <style>
     body {
       margin: 0;
@@ -118,7 +118,68 @@
       border-bottom-color: #e5e7eb;
     }
   </style>
-  <!-- End of under construction need -->
+  <!-- End of under construction need - moving lines -->
+
+  <!-- Begin of under construction need - shovel -->
+  <style>
+  .uc-wrapper {
+    text-align: center;
+    padding: 60px 20px;
+    font-family: system-ui, sans-serif;
+    color: #e5e7eb;
+  }
+
+  .uc-title {
+    margin-top: 20px;
+    font-size: 1.6rem;
+    font-weight: 700;
+  }
+
+  .uc-text {
+    margin-top: 8px;
+    font-size: 1rem;
+    opacity: 0.8;
+  }
+
+  .uc-icon {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+
+  .shovel {
+    width: 80px;
+    height: 120px;
+    position: relative;
+    animation: dig 1.4s ease-in-out infinite;
+  }
+
+  .handle {
+    width: 12px;
+    height: 70px;
+    background: #d1d5db;
+    border-radius: 6px;
+    margin: 0 auto;
+  }
+
+  .blade {
+    width: 50px;
+    height: 40px;
+    background: #9ca3af;
+    border-radius: 0 0 20px 20px;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  @keyframes dig {
+    0% { transform: rotate(0deg) translateY(0); }
+    50% { transform: rotate(-15deg) translateY(6px); }
+    100% { transform: rotate(0deg) translateY(0); }
+  }
+</style>
+ <!-- End of under construction need - shovel -->
 </head>
 <body class="font-sans bg-[#f8f8f7] text-[#34322d]">
 
@@ -141,6 +202,17 @@
       I’m still working on this bio. Check back soon
       <span class="blinking-dot"></span>
     </div>
+  </div>
+  <div class="uc-wrapper">
+    <div class="uc-icon">
+      <div class="shovel">
+        <div class="handle"></div>
+        <div class="blade"></div>
+      </div>
+    </div>
+
+    <h2 class="uc-title">This page is under construction</h2>
+    <p class="uc-text">I'm still working on this section. Check back soon.</p>
   </div>
   <!-- Main Content -->
   <main class="px-16 py-10 max-w-4xl mx-auto">
