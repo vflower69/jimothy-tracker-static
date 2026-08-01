@@ -53,7 +53,14 @@
   <div id="boss">🗑️👹</div>
   <div id="hp">Boss HP: <span id="hpValue">20</span></div>
   <div id="jimothy">🦝⚔️</div>
-
+  <script>
+    if (
+      window.location.hostname !== "jimothytracker.org" &&
+      window.location.hostname !== "localhost"
+    ) {
+      document.body.innerHTML = "🦝 Jimothy says: No stealing!";
+    }
+  </script>
   <script>
     const jimothy = document.getElementById("jimothy");
     const bossHP = document.getElementById("hpValue");
@@ -85,12 +92,5 @@
   </script>
 
 </body>
-<script>
-  if (
-    window.location.hostname !== "jimothytracker.org" &&
-    window.location.hostname !== "localhost"
-  ) {
-    document.body.innerHTML = "🦝 Jimothy says: No stealing!";
-  }
-</script>
+
 </html>
