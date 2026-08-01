@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Jimothy Boss Fight</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    body {
+      background: #0f172a;
+      margin: 0;
+      overflow: hidden;
+      font-family: system-ui, sans-serif;
+      color: #e5e7eb;
+      text-align: center;
+    }
+
+    #jimothy {
+      position: absolute;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 5rem;
+      cursor: pointer;
+    }
+
+    #boss {
+      position: absolute;
+      top: 40px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 8rem;
+    }
+
+    .blast {
+      position: absolute;
+      font-size: 2rem;
+      animation: shoot 1s linear forwards;
+    }
+
+    @keyframes shoot {
+      from { transform: translateY(0); }
+      to { transform: translateY(-100vh); }
+    }
+
+    #hp {
+      margin-top: 1rem;
+      font-size: 1.2rem;
+    }
+  </style>
+</head>
+<body>
+
+  <div id="boss">🗑️👹</div>
+  <div id="hp">Boss HP: <span id="hpValue">20</span></div>
+  <div id="jimothy">🦝⚔️</div>
+
+  <script>
+    const jimothy = document.getElementById("jimothy");
+    const bossHP = document.getElementById("hpValue");
+
+    jimothy.addEventListener("click", () => {
+      const b = document.createElement("div");
+      b.className = "blast";
+      b.textContent = "✨";
+
+      b.style.left = jimothy.offsetLeft + 30 + "px";
+      b.style.top = jimothy.offsetTop + "px";
+
+      document.body.appendChild(b);
+
+      setTimeout(() => b.remove(), 1000);
+
+      bossHP.textContent = bossHP.textContent - 1;
+
+      if (bossHP.textContent <= 0) {
+        alert("Jimothy defeated the Mega Trash Titan!");
+
+        const scores = JSON.parse(localStorage.getItem("jimothyScores") || "[]");
+        scores.push("Boss defeated at " + new Date().toLocaleString());
+        localStorage.setItem("jimothyScores", JSON.stringify(scores));
+
+        window.location.href = "../games.html";
+      }
+    });
+  </script>
+
+</body>
+</html>
