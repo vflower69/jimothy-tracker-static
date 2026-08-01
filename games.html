@@ -259,7 +259,10 @@
   <footer>
     Jimothy approves this retro arcade and denies responsibility for excessive laughter.
   </footer>
-
+  <script>
+    if (window.location.hostname !== "jimothytracker.org") {
+      document.body.innerHTML = "🦝 Jimothy says: This is stolen from jimothytracker.org!";}
+  </script>
   <script>
     const runner = document.getElementById("runner");
     const cards = document.querySelectorAll(".card");
