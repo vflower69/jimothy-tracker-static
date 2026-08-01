@@ -24,9 +24,7 @@ function clearMapMarkers() {
 // --------------------------------------------------------------------
 function drawPageMarkers(pageItems) {
   clearMapMarkers();
-
   const bounds = new google.maps.LatLngBounds();
-
   pageItems.forEach(loc => {
     const marker = new google.maps.Marker({
       position: { lat: loc.lat, lng: loc.lng },
@@ -34,14 +32,11 @@ function drawPageMarkers(pageItems) {
       label: "J",
       opacity: 0, // start invisible for fade-in
     });
-
     // Smooth fade-in
     setTimeout(() => marker.setOpacity(1), 50);
-
     mapMarkers.push(marker);
     bounds.extend(marker.getPosition());
   });
-
   // Auto-pan + auto-zoom to fit current page
   if (!bounds.isEmpty()) {
     map.fitBounds(bounds);
@@ -53,28 +48,22 @@ function drawPageMarkers(pageItems) {
 // ------------------------------
 function drawAllMarkers() {
   clearMapMarkers();
-
   const bounds = new google.maps.LatLngBounds();
-
   const markers = allLocations.map(loc => {
     const marker = new google.maps.Marker({
       position: { lat: loc.lat, lng: loc.lng },
       map,
       label: "J"
     });
-
     bounds.extend(marker.getPosition());
     return marker;
   });
-
   mapMarkers = markers;
-
   // Cluster them
   markerCluster = new markerClusterer.MarkerClusterer({ 
     map, 
     markers 
   });
-
   // Auto-fit map to all markers
   if (!bounds.isEmpty()) {
     map.fitBounds(bounds);
