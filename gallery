@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Jimothy Gallery</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #0f172a;
+      color: #e5e7eb;
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+    }
+
+    header {
+      text-align: center;
+      padding: 2rem 1rem 1rem;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 2.2rem;
+    }
+
+    p.subtitle {
+      margin: 0.5rem 0 1rem;
+      color: #9ca3af;
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 1rem;
+      padding: 1rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .gallery-item {
+      position: relative;
+      overflow: hidden;
+      border-radius: 0.75rem;
+      cursor: pointer;
+      background: #1f2937;
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    .gallery-item:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* Lightbox */
+    #lightbox {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.85);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 999;
+    }
+
+    #lightbox img {
+      max-width: 90%;
+      max-height: 90%;
+      border-radius: 0.5rem;
+      box-shadow: 0 0 25px rgba(255, 255, 255, 0.2);
+    }
+
+    #lightbox.close-area {
+      cursor: pointer;
+    }
+
+    footer {
+      text-align: center;
+      padding: 1rem;
+      color: #6b7280;
+      font-size: 0.85rem;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Jimothy’s Official Gallery</h1>
+    <p class="subtitle">A curated collection of Seattle’s most chaotic raccoon.</p>
+  </header>
+
+  <main class="gallery">
+    <!-- Replace these image URLs with your own Jimothy photos -->
+    <div class="gallery-item"><img src="images/jimothy1.jpg" alt="Jimothy 1"></div>
+    <div class="gallery-item"><img src="images/jimothy2.jpg" alt="Jimothy 2"></div>
+    <div class="gallery-item"><img src="images/jimothy3.jpg" alt="Jimothy 3"></div>
+    <div class="gallery-item"><img src="images/jimothy4.jpg" alt="Jimothy 4"></div>
+    <div class="gallery-item"><img src="images/jimothy5.jpg" alt="Jimothy 5"></div>
+    <div class="gallery-item"><img src="images/jimothy6.jpg" alt="Jimothy 6"></div>
+  </main>
+
+  <div id="lightbox" class="close-area">
+    <img id="lightbox-img" src="" alt="Expanded view">
+  </div>
+
+  <footer>
+    Jimothy approves these photos and denies all allegations of snack theft.
+  </footer>
+
+  <script>
+    const items = document.querySelectorAll(".gallery-item img");
+    const lightbox = document.getElementById("lightbox");
+    const lightboxImg = document.getElementById("lightbox-img");
+
+    items.forEach(img => {
+      img.addEventListener("click", () => {
+        lightboxImg.src = img.src;
+        lightbox.style.display = "flex";
+      });
+    });
+
+    lightbox.addEventListener("click", () => {
+      lightbox.style.display = "none";
+    });
+  </script>
+
+</body>
+</html>
