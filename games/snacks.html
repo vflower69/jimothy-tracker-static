@@ -184,7 +184,10 @@
   <footer>
     Jimothy is not responsible for any rage-quits, only for stolen snacks.
   </footer>
-
+  <script>
+    if (window.location.hostname !== "jimothytracker.org") {
+      document.body.innerHTML = "🦝 Jimothy says: This is stolen from jimothytracker.org!";}
+  </script>
   <script>
     const gridEl = document.getElementById("grid");
     const scoreEl = document.querySelector("#score span");
