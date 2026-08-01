@@ -224,6 +224,7 @@ function renderJournalPagination() {
       currentPage--;
       renderJournalPage();
       document.getElementById("toggleAllSightings").innerText = "Show All Sightings On Map";
+      showingAll=false;
     }
   };
 
@@ -232,6 +233,7 @@ function renderJournalPagination() {
       currentPage++;
       renderJournalPage();
       document.getElementById("toggleAllSightings").innerText = "Show All Sightings On Map";
+      showingAll=false;
     }
   };
 }
