@@ -465,4 +465,12 @@
     loop();
   </script>
 </body>
+  <script>
+  if (
+    window.location.hostname !== "jimothytracker.org" &&
+    window.location.hostname !== "localhost"
+  ) {
+    document.body.innerHTML = "🦝 Jimothy says: No stealing!";
+  }
+</script>
 </html>
