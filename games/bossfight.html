@@ -54,12 +54,8 @@
   <div id="hp">Boss HP: <span id="hpValue">20</span></div>
   <div id="jimothy">🦝⚔️</div>
   <script>
-    if (
-      window.location.hostname !== "jimothytracker.org" &&
-      window.location.hostname !== "localhost"
-    ) {
-      document.body.innerHTML = "🦝 Jimothy says: No stealing!";
-    }
+    if (window.location.hostname !== "jimothytracker.org") {
+      document.body.innerHTML = "🦝 Jimothy says: This is stolen from jimothytracker.org!";}
   </script>
   <script>
     const jimothy = document.getElementById("jimothy");
@@ -69,7 +65,7 @@
       const b = document.createElement("div");
       b.className = "blast";
       b.textContent = "✨";
-
+ 
       b.style.left = jimothy.offsetLeft + 30 + "px";
       b.style.top = jimothy.offsetTop + "px";
 
