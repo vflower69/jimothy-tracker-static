@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Silly AI — Jimothy Reacts</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    body {
+      background: #0f172a;
+      color: #e5e7eb;
+      font-family: system-ui, sans-serif;
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+
+    #jimothy {
+      font-size: 7rem;
+      transition: transform 0.2s ease;
+    }
+
+    input {
+      margin-top: 1rem;
+      padding: 0.5rem 1rem;
+      border-radius: 0.5rem;
+      border: none;
+      font-size: 1rem;
+    }
+
+    .spin { animation: spin 1s infinite linear; }
+    @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+
+    .zoom { animation: zoom 0.6s infinite alternate; }
+    @keyframes zoom { from { transform: scale(1); } to { transform: scale(1.4); } }
+
+    .shake { animation: shake 0.2s infinite; }
+    @keyframes shake {
+      0% { transform: translateX(0); }
+      50% { transform: translateX(10px); }
+      100% { transform: translateX(0); }
+    }
+
+    .chaos { animation: chaos 0.3s infinite; }
+    @keyframes chaos {
+      0% { transform: rotate(0deg) scale(1); }
+      25% { transform: rotate(20deg) scale(1.2); }
+      50% { transform: rotate(-20deg) scale(0.8); }
+      75% { transform: rotate(10deg) scale(1.3); }
+      100% { transform: rotate(0deg) scale(1); }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="jimothy">🦝</div>
+
+  <input id="input" placeholder="Type: happy, angry, spin, zoom, chaos">
+
+  <script>
+    const jimothy = document.getElementById("jimothy");
+    const input = document.getElementById("input");
+
+    input.addEventListener("input", () => {
+      jimothy.className = "";
+
+      const v = input.value.toLowerCase();
+
+      if (v.includes("happy")) jimothy.textContent = "🦝😊";
+      if (v.includes("angry")) jimothy.textContent = "🦝😠";
+
+      if (v.includes("spin")) jimothy.classList.add("spin");
+      if (v.includes("zoom")) jimothy.classList.add("zoom");
+      if (v.includes("shake")) jimothy.classList.add("shake");
+      if (v.includes("chaos")) jimothy.classList.add("chaos");
+
+      if (v === "") {
+        jimothy.textContent = "🦝";
+        jimothy.className = "";
+      }
+    });
+  </script>
+
+</body>
+</html>
