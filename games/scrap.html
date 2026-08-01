@@ -298,7 +298,10 @@
             <button class="btn" id="winBtn">PLAY AGAIN?</button>
         </div>
     </div>
-
+  <script>
+    if (window.location.hostname !== "jimothytracker.org") {
+      document.body.innerHTML = "🦝 Jimothy says: This is stolen from jimothytracker.org!";}
+  </script>
     <script>
         const canvas = document.getElementById('gameCanvas');
         const ctx = canvas.getContext('2d');
