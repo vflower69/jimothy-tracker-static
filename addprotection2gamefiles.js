@@ -1,3 +1,23 @@
+//
+/*   Build Script That Auto‑Injects Footer + Protection
+This script automatically:
+
+Scans your /games/ folder
+
+Injects the protection snippet at the top of <body>
+
+Injects the footer before </body>
+
+Saves the updated files into /dist/games/
+
+Leaves your originals untouched
+  Run it with:
+  node build.js
+Your protected versions will appear in:
+/dist/games/
+Upload those to GitHub Pages.
+*/
+//
 const fs = require("fs");
 const path = require("path");
 
