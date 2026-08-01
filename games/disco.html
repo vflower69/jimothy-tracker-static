@@ -118,7 +118,10 @@
       <button class="btn" id="startBtn">🪩 START DISCO SONG!</button>
     </div>
   </div>
-
+  <script>
+    if (window.location.hostname !== "jimothytracker.org") {
+      document.body.innerHTML = "🦝 Jimothy says: This is stolen from jimothytracker.org!";}
+  </script>
   <script>
     const canvas = document.getElementById('canvas');
     const ctx = canvas.getContext('2d');
@@ -465,12 +468,5 @@
     loop();
   </script>
 </body>
-  <script>
-  if (
-    window.location.hostname !== "jimothytracker.org" &&
-    window.location.hostname !== "localhost"
-  ) {
-    document.body.innerHTML = "🦝 Jimothy says: No stealing!";
-  }
-</script>
+
 </html>
