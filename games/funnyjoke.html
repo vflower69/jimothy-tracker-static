@@ -101,7 +101,7 @@
       background: #0d0a1a;
       border: 2px solid #7928ca;
       border-radius: 12px;
-      color: #00ftea;
+      color: #00ffea;
       font-family: var(--font);
       font-size: 1.1rem;
       padding: 12px;
@@ -461,7 +461,7 @@
       let w = 850 / cols, h = 60 / rows;
       for (let r = 0; r < rows; r++) {
         for (let c = 0; c < cols; c++) {
-          ctx.fillStyle = (r + c + Math.floor(now * 4)) % 2 === 0 ? '#ff007f' : '#00ftea';
+          ctx.fillStyle = (r + c + Math.floor(now * 4)) % 2 === 0 ? '#ff007f' : '#00ffea';
           ctx.globalAlpha = 0.25;
           ctx.fillRect(c * w, 380 + r * h, w - 4, h - 4);
           ctx.globalAlpha = 1.0;
