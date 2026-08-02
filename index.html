@@ -66,7 +66,7 @@
     <header class="flex flex-wrap items-center justify-between px-16 py-6 bg-gradient-to-b from-[#f8f8f7] to-[#f1f0ee] shadow-sm gap-4">
       <div class="flex items-center gap-3">
         <!-- h1 class="text-2xl font-serif text-[#34322d]">🦝 Jimothy the Raccoon Tracker</h1 -->
-        < h1 class="text-4xl font-serif tracking-wide text-[#34322d]">🦝 Jimothy the Raccoon Tracker</h1>
+        <h1 class="text-4xl font-serif tracking-wide text-[#34322d]">🦝 Jimothy the Raccoon Tracker</h1>
         <!-- h1 class="text-4xl font-serif text-[#34322d]"><span class="align-middle">🦝</span> Jimothy the Raccoon Tracker</h1 -->
       </div>
       <nav class="flex items-center gap-8 text-lg font-medium text-[#34322d]">
@@ -160,17 +160,17 @@
       <form id="sightingForm" class="space-y-4 py-6">
         <!-- Location -->
         <div>
-          <label class="block text-sm font-medium mb-1">Where did you see him?</label>
+          <label for="locationInput" class="block text-sm font-medium mb-1">Where did you see him?</label>
           <input id="locationInput" type="text" class="w-full p-3 rounded border" placeholder="Click sighting location on the map.">
         </div>
         <!-- Time -->
         <div>
-          <label class="block text-sm font-medium mb-1">When did you see him?</label>
+          <label for="timeInput" class="block text-sm font-medium mb-1">When did you see him?</label>
           <input id="timeInput" type="datetime-local" class="w-full p-3 rounded border">
         </div>
         <!-- Note -->
         <div>
-          <label class="block text-sm font-medium mb-1">A little more detail (optional)</label>
+          <label for="noteInput" class="block text-sm font-medium mb-1">A little more detail (optional)</label>
           <textarea id="noteInput" class="w-full p-3 rounded border" rows="3" placeholder="Sighting neighborhood and what was Jimothy up to?"></textarea>
         </div>
         <div class="flex items-center gap-3 mt-2">
