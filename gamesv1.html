@@ -4,6 +4,8 @@
   <meta charset="UTF-8" />
   <title>Jimothy Retro Arcade</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Retro Pixel Font -->
   <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
 
   <style>
@@ -15,6 +17,22 @@
       padding: 0;
       text-align: center;
       overflow-x: hidden;
+    }
+
+    /* CRT Scanline Effect */
+    body::after {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background: repeating-linear-gradient(
+        to bottom,
+        rgba(255,255,255,0.03),
+        rgba(255,255,255,0.03) 2px,
+        transparent 2px,
+        transparent 4px
+      );
+      pointer-events: none;
+      z-index: 999;
     }
 
     header {
@@ -33,6 +51,7 @@
       font-size: 0.8rem;
     }
 
+    /* Grid */
     .grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
@@ -42,6 +61,7 @@
       margin: 0 auto;
     }
 
+    /* Game Card */
     .card {
       background: #111;
       border: 3px solid #00ffcc;
@@ -91,6 +111,7 @@
       background: #00ffee;
     }
 
+    /* Jimothy Runner */
     #runner {
       position: absolute;
       font-size: 3rem;
@@ -100,6 +121,7 @@
       text-shadow: 0 0 10px #fff;
     }
 
+    /* Surprise Me Button */
     #surprise {
       margin: 2rem auto;
       padding: 1rem 2rem;
@@ -117,6 +139,7 @@
       transform: scale(1.1);
     }
 
+    /* Leaderboard */
     #leaderboard {
       margin-top: 2rem;
       padding: 1rem;
@@ -153,125 +176,107 @@
 
   <header>
     <h1>Jimothy Retro Arcade</h1>
-    <p class="subtitle">SELECT YOUR CHAOS! Jimothy approves this retro arcade and denies responsibility for excessive laughter.</p>
+    <p class="subtitle">SELECT YOUR CHAOS!</p>
   </header>
 
+  <!-- Jimothy Runner -->
   <div id="runner">🦝</div>
+
+  <!-- Surprise Me Button -->
   <div id="surprise">🎲 Surprise Me!</div>
 
   <main class="grid">
-    <div class="card" data-link="games/disco.html">
-      <h2>Jimothy Disco</h2>
-      <p>Dance floor chaos and raccoon grooves - don't tickle me.</p>
+
+    <!-- GAME CARDS -->
+    <div class="card" data-link="games/silly.html">
+      <h2>Jimothy Silly</h2>
+      <p>5‑second silly animation.</p>
       <div class="difficulty">Difficulty: ⭐</div>
-      <a href="games/disco.html">Play</a>
+      <a href="games/silly.html">Play</a>
     </div>
 
-    <div class="card" data-link="games/discoverypark.html">
-      <h2>Discovery Park v1</h2>
-      <p>Explore Seattle’s wild side with Jimothy.</p>
-      <div class="difficulty">Difficulty: ⭐⭐⭐</div>
-      <a href="games/discoverypark.html">Play</a>
+    <div class="card" data-link="games/silly2.html">
+      <h2>Particle Chaos</h2>
+      <p>Jimothy explodes into raccoon particles.</p>
+      <div class="difficulty">Difficulty: ⭐⭐</div>
+      <a href="games/silly2.html">Play</a>
     </div>
-    <div class="card" data-link="games/discoveryparkv2.html">
-      <h2>Discovery Park v2</h2>
-      <p>Explore Seattle’s Discovery Park with Jimothy.</p>
-      <div class="difficulty">Difficulty: ⭐⭐⭐</div>
-      <a href="games/discoveryparkv2.html">Play</a>
+
+    <div class="card" data-link="games/silly-deluxe.html">
+      <h2>Silly Deluxe</h2>
+      <p>Jimothy multiplies into 20 raccoons.</p>
+      <div class="difficulty">Difficulty: ⭐⭐</div>
+      <a href="games/silly-deluxe.html">Play</a>
     </div>
-    <div class="card" data-link="games/discoveryparkv3.html">
-      <h2>Discovery Park v3</h2>
-      <p>Jimothy's Adventure at Seattle Discovery Park.</p>
+
+    <div class="card" data-link="games/silly-music.html">
+      <h2>Silly Music</h2>
+      <p>Jimothy makes goofy sounds.</p>
+      <div class="difficulty">Difficulty: ⭐</div>
+      <a href="games/silly-music.html">Play</a>
+    </div>
+
+    <div class="card" data-link="games/silly-physics.html">
+      <h2>Silly Physics</h2>
+      <p>Jimothy bounces around the screen.</p>
+      <div class="difficulty">Difficulty: ⭐⭐⭐</div>
+      <a href="games/silly-physics.html">Play</a>
+    </div>
+
+    <div class="card" data-link="games/silly-portal.html">
+      <h2>Silly Portal</h2>
+      <p>Jimothy teleports like a raccoon wizard.</p>
+      <div class="difficulty">Difficulty: ⭐⭐⭐</div>
+      <a href="games/silly-portal.html">Play</a>
+    </div>
+
+    <div class="card" data-link="games/silly-battle.html">
+      <h2>Silly Battle</h2>
+      <p>Jimothy fights evil trash cans.</p>
       <div class="difficulty">Difficulty: ⭐⭐⭐⭐</div>
-      <a href="games/discoveryparkv3.html">Play</a>
+      <a href="games/silly-battle.html">Play</a>
     </div>
-    <div class="card" data-link="games/findbarnaby.html">
-      <h2>Find Friend Barnaby</h2>
-      <p>Help Jimothy reunite with his raccoon friend.</p>
+
+    <div class="card" data-link="games/silly-3d.html">
+      <h2>Silly 3D</h2>
+      <p>Fake 3D raccoon hologram.</p>
+      <div class="difficulty">Difficulty: ⭐⭐</div>
+      <a href="games/silly-3d.html">Play</a>
+    </div>
+
+    <div class="card" data-link="games/silly-ai.html">
+      <h2>Silly AI</h2>
+      <p>Jimothy reacts to your text input.</p>
       <div class="difficulty">Difficulty: ⭐⭐⭐</div>
-      <a href="games/findbarnaby.html">Play</a>
+      <a href="games/silly-ai.html">Play</a>
     </div>
 
-    <div class="card" data-link="games/growflowers.html">
-      <h2>Grow Flowers</h2>
-      <p>Becomes a gentle gardener.</p>
-      <div class="difficulty">Difficulty: ⭐</div>
-      <a href="games/growflowers.html">Play</a>
-    </div>
-    <div class="card" data-link="games/growflowersv2.html">
-      <h2>Grow Flowers v2</h2>
-      <p>Jimothy becomes a chaotic gardener.</p>
-      <div class="difficulty">Difficulty: ⭐⭐</div>
-      <a href="games/growflowersv2.html">Play</a>
-    </div>
-    <div class="card" data-link="games/karaoke.html">
-      <h2>Karaoke Night</h2>
-      <p>Jimothy sings terribly but passionately - Why are you touching me?</p>
-      <div class="difficulty">Difficulty: ⭐</div>
-      <a href="games/karaoke.html">Play</a>
-    </div>
-    <div class="card" data-link="games/scrap.html">
-      <h2>Jimothy's Scrap</h2>
-      <p>Jimothy becomes martial artist.</p>
-      <div class="difficulty">Difficulty: ⭐⭐</div>
-      <a href="games/scrap.html">Play</a>
-    </div>
-    <div class="card" data-link="games/seattlesprint.html">
-      <h2>Seattle Sprint</h2>
-      <p>Jimothy grab berries & snacks around Ballard while dodging recycling bins!</p>
-      <div class="difficulty">Difficulty: ⭐⭐</div>
-      <a href="games/seattlesprint.html">Play</a>
+    <div class="card" data-link="games/jimothy-martial-arts.html">
+      <h2>Martial Arts Jimothy</h2>
+      <p>Runs, jumps, spin‑kicks… then farts.</p>
+      <div class="difficulty">Difficulty: ⭐⭐⭐⭐</div>
+      <a href="games/jimothy-martial-arts.html">Play</a>
     </div>
 
-    <div class="card" data-link="games/snacks.html">
-      <h2>Snack Attack</h2>
-      <p>Jimothy’s Sneaky Snack Dash</p>
-      <div class="difficulty">Difficulty: ⭐</div>
-      <a href="games/snacks.html">Play</a>
-    </div>
-
-    <div class="card" data-link="games/tickle.html">
-      <h2>Tickle Jimothy</h2>
-      <p>Try not to laugh while Jimothy giggles uncontrollably.</p>
-      <div class="difficulty">Difficulty: ⭐</div>
-      <a href="games/tickle.html">Play</a>
-    </div>
-    <div class="card" data-link="games/ticklev2.html">
-      <h2>Tickle Jimothy v2</h2>
-      <p>Nose is too itching.</p>
-      <div class="difficulty">Difficulty: ⭐⭐</div>
-      <a href="games/ticklev2.html">Play</a>
-    </div>
     <div class="card" data-link="games/bossfight.html">
       <h2>Boss Fight</h2>
-      <p>Jimothy vs. the Mega Trash Titan.</p>
+      <p>Jimothy vs Mega Trash Titan.</p>
       <div class="difficulty">Difficulty: ⭐⭐⭐⭐⭐</div>
       <a href="games/bossfight.html">Play</a>
     </div>
-    <div class="card" data-link="games/funnyjoke.html">
-      <h2>Talk to Jimothy</h2>
-      <p>Jimothy is Funny when you talk to him</p>
-      <div class="difficulty">Difficulty: ⭐⭐⭐⭐</div>
-      <a href="games/funnyjoke.html">Play</a>
-    </div>
+
   </main>
 
+  <!-- Leaderboard -->
   <div id="leaderboard">
     <h2>High Scores</h2>
     <ul id="scores"></ul>
   </div>
 
-  <!-- footer>
-    © 2026 Emily Liu | JimothyTracker.org | All rights reserved. Unauthorized copying prohibited.
-</footer -->
-  <footer class="text-sm text-gray-800 py-6 text-center">
-  © 2026 Emily Liu · JimothyTracker.org · All rights reserved. Unauthorized use prohibited. Violations may result in DMCA takedown.
+  <footer>
+    Jimothy approves this retro arcade and denies responsibility for excessive laughter.
   </footer>
 
-  <script>
-    if (window.location.hostname !== "jimothytracker.org") {
-      document.body.innerHTML = "🦝 Jimothy says: This is stolen from jimothytracker.org!";}
-  </script>
   <script>
     const runner = document.getElementById("runner");
     const cards = document.querySelectorAll(".card");
@@ -281,7 +286,6 @@
     const hoverSound = new Audio("data:audio/wav;base64,UklGRiQAAABXQVZFZm10IBAAAAABAAEAESsAACJWAAACABAAZGF0YQAAAAA=");
     const announcer = new Audio("data:audio/wav;base64,UklGRiQAAABXQVZFZm10IBAAAAABAAEAESsAACJWAAACABAAZGF0YQAAAAA=");
 
-    // Play announcer once on load
     announcer.play();
 
     // Jimothy runs to hovered card + sound
@@ -290,7 +294,6 @@
         const rect = card.getBoundingClientRect();
         runner.style.left = rect.left + rect.width / 2 + "px";
         runner.style.top = rect.top - 40 + "px";
-        hoverSound.currentTime = 0;
         hoverSound.play();
       });
     });
@@ -301,7 +304,7 @@
       window.location.href = randomCard.dataset.link;
     });
 
-    // Load leaderboard from localStorage (used by bossfight, etc.)
+    // Load leaderboard
     const savedScores = JSON.parse(localStorage.getItem("jimothyScores") || "[]");
     savedScores.forEach(score => {
       const li = document.createElement("li");
