@@ -157,11 +157,11 @@
       <!-- Report a sighting Form -->
       <div class="bg-white rounded-xl shadow p-2 h-[445px] overflow-y-auto">
       <h2 id="sightingReportForm" class="text-2xl font-semibold py-6 mb-4">Report A Sighting</h2>
-      <form id="sightingForm" class="space-y-4 py-6">
+      <form id="sightingForm" class="space-y-4 py-6" onsubmit="submitFormSighting(event)">
         <!-- Location -->
         <div>
           <label for="locationInput" class="block text-sm font-medium mb-1">Where did you see him?</label>
-          <input id="locationInput" type="text" class="w-full p-3 rounded border" placeholder="Click sighting location on the map.">
+          <input id="locationInput" type="text" class="w-full p-3 rounded border pac-target-input" placeholder="Click sighting location on the map." autocomplete="off">
         </div>
         <!-- Time -->
         <div>
@@ -173,16 +173,45 @@
           <label for="noteInput" class="block text-sm font-medium mb-1">A little more detail (optional)</label>
           <textarea id="noteInput" class="w-full p-3 rounded border" rows="3" placeholder="Sighting neighborhood and what was Jimothy up to?"></textarea>
         </div>
-        <div class="flex items-center gap-3 mt-2">
-          <button onclick="submitFormSighting()" type="submit"
-                  class="px-4 py-2 bg-blue-800 hover:bg-blue-900 text-white rounded transition-colors flex-shrink-0">
+        <!-- Email -->
+        <div>
+          <label for="emailInput" class="block text-sm font-medium mb-1">Your Email (verification required)</label>
+          <input id="emailInput" type="email" class="w-full p-3 rounded border" placeholder="you@example.com" required>
+        </div>
+        <!-- Verification Step -->
+        <div id="verificationSection" class="space-y-3">
+          <button type="button"
+                  onclick="sendVerificationCode()"
+                  id="sendCodeBtn"
+                  class="px-4 py-2 bg-purple-700 hover:bg-purple-800 text-white rounded transition-colors">
+            Send Verification Code
+          </button>
+          <div id="codeInputWrapper" class="hidden">
+            <label for="verificationCode" class="block text-sm font-medium mb-1">Enter the 6‑digit code sent to your email</label>
+            <input id="verificationCode" type="text" maxlength="6" class="w-full p-3 rounded border" placeholder="123456">
+            <button type="button"
+                    onclick="verifyCode()"
+                    class="px-4 py-2 bg-green-700 hover:bg-green-800 text-white rounded transition-colors mt-2">
+              Verify Code
+            </button>
+            <p id="verificationMessage" class="text-sm mt-1"></p>
+          </div>
+        </div>
+
+        <!-- Submit -->
+        <div class="flex items-center gap-3 mt-4">
+          <button id="submitSightingBtn"
+                  type="submit"
+                  class="px-4 py-2 bg-blue-800 text-white rounded transition-colors flex-shrink-0 opacity-50 cursor-not-allowed"
+                  disabled>
             Submit Sighting
-          </button>   
+          </button>
           <p class="text-xs text-[#858481]">
             By submitting, you are sharing this location and note publicly with the Jimothy community.
           </p>
         </div>
       </form>
+
       </div>
 
       <!-- Field Journal: Sightings list -->
