@@ -10,6 +10,10 @@ let marker;
 let mapMarkers = [];
 let markerCluster = null;
 let showingAll = false;
+let emailVerified = false;
+let verificationCode = null;
+let verificationExpires = null;
+
 
 // ------------------------------
 // CLEAR THE MARKERS ON MAP
