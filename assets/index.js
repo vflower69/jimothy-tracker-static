@@ -479,6 +479,12 @@ export default {
 async function submitFormSighting() {
   event.preventDefault();
   
+  // Require email verification
+  if (!emailVerified) {
+    alert("Please verify your email before submitting.");
+    return;
+  }
+  
   // Read comma-separated location input
   const loc = document.getElementById("locationInput").value.trim();
   const note = document.getElementById("noteInput").value.trim();
@@ -512,7 +518,8 @@ async function submitFormSighting() {
     lat,
     lng,
     timestamp,
-    note
+    note,
+    email
   };
 
   try {
@@ -527,6 +534,8 @@ async function submitFormSighting() {
     if (data.success) {
       alert("Jimothy sighting submitted successfully.");
       document.getElementById("noteInput").value = "";
+      document.getElementById("verificationCode").value = "";
+      emailVerified = false; // reset for next submission
       loadJournal();
     } else {
       alert("Error submitting sighting: " + data.error);
