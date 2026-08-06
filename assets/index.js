@@ -320,6 +320,86 @@ async function updateGitHubFile(newEntry, fullPayload) {
     })
   });
 }
+// ------------------------------
+// SEND VERIFICATION CODE
+// ------------------------------
+async function sendVerificationCode() {
+  const email = document.getElementById("emailInput").value.trim();
+  const msg = document.getElementById("verificationMessage");
+
+  if (!email) {
+    msg.textContent = "Please enter your email first.";
+    msg.style.color = "red";
+    return;
+  }
+
+  // Generate a 6-digit code
+  verificationCode = Math.floor(100000 + Math.random() * 900000).toString();
+  verificationExpires = Date.now() + 5 * 60 * 1000; // 5 minutes
+
+  // Call your Cloudflare Worker to send the email
+  try {
+    const res = await fetch("https://api.jimothytracker.org/send-code", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        email,
+        code: verificationCode
+      })
+    });
+
+    const data = await res.json();
+
+    if (data.success) {
+      msg.textContent = "Verification code sent! Check your email.";
+      msg.style.color = "green";
+
+      // Reveal code input
+      document.getElementById("codeInputWrapper").classList.remove("hidden");
+    } else {
+      msg.textContent = "Error sending code: " + data.error;
+      msg.style.color = "red";
+    }
+  } catch (err) {
+    msg.textContent = "Network error: " + err.message;
+    msg.style.color = "red";
+  }
+}
+
+// ------------------------------
+// VERIFY THE CODE
+// ------------------------------
+function verifyCode() {
+  const userCode = document.getElementById("verificationCode").value.trim();
+  const msg = document.getElementById("verificationMessage");
+
+  if (!verificationCode) {
+    msg.textContent = "Please request a verification code first.";
+    msg.style.color = "red";
+    return;
+  }
+
+  if (Date.now() > verificationExpires) {
+    msg.textContent = "Verification code expired. Request a new one.";
+    msg.style.color = "red";
+    return;
+  }
+
+  if (userCode === verificationCode) {
+    emailVerified = true;
+    msg.textContent = "Email verified! You may now submit your sighting.";
+    msg.style.color = "green";
+
+    // Enable submit button
+    const btn = document.getElementById("submitSightingBtn");
+    btn.disabled = false;
+    btn.classList.remove("opacity-50", "cursor-not-allowed");
+  } else {
+    msg.textContent = "Incorrect code. Try again.";
+    msg.style.color = "red";
+  }
+}
+
 
 // -------------------------------------------
 // SUBMIT JIMOTHY LOCATION (Cloudflare worker)
@@ -394,6 +474,7 @@ export default {
     });
   }
 };
+
 ***********CLOUDFLARE WORKER*************** */
 async function submitFormSighting() {
   event.preventDefault();
