@@ -568,6 +568,8 @@ function loadSightingsOnMap(locations) {
 
 //Explicitly exposes the function globally so the HTML can call it.
 window.submitFormSighting = submitFormSighting;
+window.sendVerificationCode = sendVerificationCode;
+window.verifyCode = verifyCode;
 //window.initMap = initMap; //see line 79
 
 // --------------------------------
