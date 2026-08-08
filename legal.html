@@ -1,104 +1,96 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <title>Legal | JimothyTracker.org</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <style>
-    body {
-      background: #000;
-      color: #00ffcc;
-      font-family: "Press Start 2P", monospace;
-      margin: 0;
-      padding: 2rem;
-      text-align: center;
-      line-height: 1.8;
-    }
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
 
-    h1, h2 {
-      color: #22c55e;
-      text-shadow: 0 0 10px #22c55e;
-      margin-bottom: 1rem;
-    }
-
-    p, li {
-      color: #99ffee;
-      font-size: 0.8rem;
-      max-width: 900px;
-      margin: 0.5rem auto;
-    }
-
-    ul {
-      list-style: none;
-      padding: 0;
-    }
-
-    a {
-      color: #22c55e;
-      text-decoration: none;
-    }
-
-    footer {
-      margin-top: 3rem;
-      padding: 1rem;
-      color: #66ffe0;
-      font-size: 0.7rem;
-    }
-  </style>
+  <meta name="description" content="Legal notices, copyright information, terms of use, and DMCA policy for JimothyTracker.org." />
 </head>
-<body>
 
-  <h1>Legal Notice</h1>
+<body class="font-sans bg-[#f8f8f7] text-[#34322d]">
 
-  <h2>Copyright</h2>
-  <p>
-    © 2026 Emily Liu. All rights reserved.  
-    All games, artwork, animations, characters (including Jimothy), and code on JimothyTracker.org are protected under U.S. and international copyright law.
-  </p>
-  <p>
-    Unauthorized copying, redistribution, modification, or hosting of these games or assets is strictly prohibited.
-  </p>
+  <!-- Header -->
+  <header class="flex flex-wrap items-center justify-between px-16 py-6 bg-gradient-to-b from-[#f8f8f7] to-[#f1f0ee] shadow-sm gap-4">
+    <div class="flex items-center gap-3">
+      <h1 class="text-2xl font-serif text-[#34322d]">🦝 Legal Information</h1>
+    </div>
+    <nav class="flex items-center gap-8 text-sm font-medium text-[#34322d]">
+      <a href="/" class="hover:text-[#a64f3c]">Home</a>
+      <a href="/jimothy-sightings" class="hover:text-[#a64f3c]">Sightings</a>
+      <a href="/#sightingReportForm" class="hover:text-[#a64f3c]">Report A Sighting</a>
+      <a href="/about" class="hover:text-[#a64f3c]">About</a>
+    </nav>
+  </header>
 
-  <h2>Terms of Use</h2>
-  <p>By accessing JimothyTracker.org, you agree to the following:</p>
+  <!-- Main Content -->
+  <main class="w-full px-4 md:px-12 lg:px-20 py-12 max-w-4xl mx-auto">
 
-  <ul>
-    <li>You may play the games for personal entertainment.</li>
-    <li>You may not copy, clone, mirror, or redistribute any game or asset.</li>
-    <li>You may not host these games on any other domain.</li>
-    <li>You may not extract or reuse code, images, sounds, or animations.</li>
-    <li>You may not attempt to bypass domain‑locking or anti‑copy protections.</li>
-  </ul>
+    <h2 class="text-3xl font-serif mb-6">Legal Notice</h2>
 
-  <h2>Contact Form Privacy Notice</h2>
-  <p>
-    JimothyTracker.org does not collect personal data except when you voluntarily submit information through the contact form.
-    Any information you provide (such as your name or email address) is used solely to respond to your inquiry and is not stored,
-    shared, sold, or used for any other purpose.
-  </p>
-  <p>
-    By submitting the contact form, you consent to us receiving and using your message for the purpose of replying.
-    If you wish to have your message deleted, you may request removal at any time.
-  </p>
+    <section class="mb-12">
+      <h3 class="text-2xl font-serif mb-3">Copyright</h3>
+      <p class="text-lg leading-relaxed mb-4">
+        © 2026 Emily Liu. All rights reserved. All games, artwork, animations, characters (including Jimothy), and code on JimothyTracker.org are protected under U.S. and international copyright law.
+      </p>
+      <p class="text-lg leading-relaxed">
+        Unauthorized copying, redistribution, modification, or hosting of these games or assets is strictly prohibited.
+      </p>
+    </section>
 
-  <h2>DMCA Takedown</h2>
-  <p>
-    If you discover unauthorized copies of JimothyTracker content, please report them to:
-    <br><br>
-    <strong>dmca@jimothytracker.org</strong>
-  </p>
+    <section class="mb-12">
+      <h3 class="text-2xl font-serif mb-3">Terms of Use</h3>
+      <p class="text-lg leading-relaxed mb-4">By accessing JimothyTracker.org, you agree to the following:</p>
 
-  <h2>Contact</h2>
-  <p>
-    For permissions, licensing, or questions, contact:
-    <br><br>
-    <strong>legal@jimothytracker.org</strong>
-  </p>
+      <ul class="list-disc pl-6 space-y-2 text-lg leading-relaxed">
+        <li>You may play the games for personal entertainment.</li>
+        <li>You may not copy, clone, mirror, or redistribute any game or asset.</li>
+        <li>You may not host these games on any other domain.</li>
+        <li>You may not extract or reuse code, images, sounds, or animations.</li>
+        <li>You may not attempt to bypass domain‑locking or anti‑copy protections.</li>
+      </ul>
+    </section>
 
-  <footer>
-    © 2026 Emily Liu | JimothyTracker.org | All rights reserved.
+    <section class="mb-12">
+      <h3 class="text-2xl font-serif mb-3">Contact Form Privacy Notice</h3>
+      <p class="text-lg leading-relaxed mb-4">
+        JimothyTracker.org does not collect personal data except when you voluntarily submit information through the contact form. Any information you provide (such as your name or email address) is used solely to respond to your inquiry and is not stored, shared, sold, or used for any other purpose.
+      </p>
+      <p class="text-lg leading-relaxed">
+        By submitting the contact form, you consent to us receiving and using your message for the purpose of replying. If you wish to have your message deleted, you may request removal at any time.
+      </p>
+    </section>
+
+    <section class="mb-12">
+      <h3 class="text-2xl font-serif mb-3">DMCA Takedown</h3>
+      <p class="text-lg leading-relaxed">
+        If you discover unauthorized copies of JimothyTracker content, please report them to:
+      </p>
+      <p class="text-lg leading-relaxed mt-4 font-semibold">
+        dmca@jimothytracker.org
+      </p>
+    </section>
+
+    <section class="mb-12">
+      <h3 class="text-2xl font-serif mb-3">Contact</h3>
+      <p class="text-lg leading-relaxed">
+        For permissions, licensing, or questions, contact:
+      </p>
+      <p class="text-lg leading-relaxed mt-4 font-semibold">
+        legal@jimothytracker.org
+      </p>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="text-sm text-gray-800 py-6 text-center">
+    © 2026 Emily Liu · JimothyTracker.org · All rights reserved. Unauthorized use prohibited. Violations may result in DMCA takedown.
   </footer>
 
 </body>
