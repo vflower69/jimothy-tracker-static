@@ -12,70 +12,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-
-  <style>
-    /* Fade + slide animation */
-    .fade-section {
-      opacity: 0;
-      transform: translateY(20px);
-      transition: opacity 0.6s ease, transform 0.6s ease;
-    }
-    .fade-section.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    /* FAQ accordion */
-    .faq-answer {
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.4s ease;
-    }
-    .faq-answer.open {
-      max-height: 500px;
-    }
-
-    /* Floating back-to-top button */
-    #backToTop {
-      position: fixed;
-      bottom: 30px;
-      right: 30px;
-      background: #a64f3c;
-      color: white;
-      padding: 12px 16px;
-      border-radius: 9999px;
-      font-size: 14px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-      cursor: pointer;
-      opacity: 0;
-      transition: opacity 0.3s ease;
-      z-index: 50;
-    }
-    #backToTop.visible {
-      opacity: 1;
-    }
-
-    /* Sidebar active section highlight */
-    .sidebar-link.active {
-      color: #a64f3c;
-      font-weight: 700;
-    }
-
-    /* Pawprint divider animation */
-    .paw-divider {
-      display: flex;
-      justify-content: center;
-      gap: 10px;
-      margin: 40px 0;
-      opacity: 0;
-      transform: scale(0.9);
-      transition: opacity 0.6s ease, transform 0.6s ease;
-    }
-    .paw-divider.visible {
-      opacity: 1;
-      transform: scale(1);
-    }
-  </style>
+  <link rel="stylesheet" href="/about.css">
 </head>
 
 <body class="font-sans bg-[#f8f8f7] text-[#34322d]">
@@ -412,64 +349,8 @@
 <footer class="text-sm text-gray-800 py-6 text-center">
   © 2026 Emily Liu · JimothyTracker.org · All rights reserved. Unauthorized use prohibited. Violations may result in DMCA takedown.
 </footer>
-
-<script>
-  // Fade-in section observer
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) entry.target.classList.add('visible');
-    });
-  }, { threshold: 0.2 });
-
-  document.querySelectorAll('.fade-section').forEach(section => {
-    observer.observe(section);
-  });
-
-  // FAQ accordion
-  document.querySelectorAll('.faq-toggle').forEach(btn => {
-    btn.addEventListener('click', () => {
-      const answer = btn.nextElementSibling;
-      const icon = btn.querySelector('span');
-
-      answer.classList.toggle('open');
-      icon.textContent = answer.classList.contains('open') ? '➖' : '➕';
-    });
-  });
-
-  // Back to top button
-  const backToTop = document.getElementById('backToTop');
-  window.addEventListener('scroll', () => {
-    if (window.scrollY > 400) backToTop.classList.add('visible');
-    else backToTop.classList.remove('visible');
-  });
-
-  backToTop.addEventListener('click', () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  });
-
-  // Sidebar section highlighting
-  const sections = document.querySelectorAll('section[id]');
-  const navLinks = document.querySelectorAll('.sidebar-link');
-
-  const highlightObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      const id = entry.target.getAttribute('id');
-      const link = document.querySelector(`.sidebar-link[href="#${id}"]`);
-
-      if (entry.isIntersecting) {
-        navLinks.forEach(l => l.classList.remove('active'));
-        if (link) link.classList.add('active');
-      }
-    });
-  }, { threshold: 0.4 });
-
-  sections.forEach(section => highlightObserver.observe(section));
-
-  // Pawprint divider animation
-  document.querySelectorAll('.paw-divider').forEach(div => {
-    observer.observe(div);
-  });
-</script>
+  
+<script src="/about.js"></script>
 
 </body>
 </html>
