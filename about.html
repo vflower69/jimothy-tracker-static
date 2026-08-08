@@ -1,123 +1,110 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Jimothy Tracker</title>
-    <link rel="stylesheet" href="styles.css"> <!-- If your index uses a shared stylesheet -->
-    <style>
-        /* Fallback styling if styles.css isn't present */
-        body {
-            font-family: Arial, sans-serif;
-            background: #f4f7f2;
-            color: #333;
-            margin: 0;
-            padding: 0;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>About Jimothy Tracker – Purpose & Community Guidelines</title>
 
-        header {
-            background: #4a6f41;
-            color: white;
-            padding: 20px;
-            text-align: center;
-        }
+  <meta name="description" content="Learn the purpose of JimothyTracker.org and how the community can responsibly report sightings to protect Jimothy and support wildlife understanding." />
+  <meta name="keywords" content="Jimothy tracker, raccoon tracking, wildlife awareness, Jimothy Seattle, raccoon habitat" />
 
-        main {
-            max-width: 800px;
-            margin: 40px auto;
-            background: white;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-        }
-
-        h1, h2 {
-            color: #4a6f41;
-        }
-
-        p {
-            line-height: 1.6;
-            margin-bottom: 18px;
-        }
-
-        .warning-box {
-            background: #fff3cd;
-            border-left: 6px solid #d39e00;
-            padding: 15px;
-            margin: 25px 0;
-            border-radius: 6px;
-        }
-
-        footer {
-            text-align: center;
-            padding: 20px;
-            color: #666;
-        }
-
-        a {
-            color: #4a6f41;
-            text-decoration: none;
-        }
-    </style>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
 </head>
-<body>
 
-<header>
-    <h1>About Jimothy Tracker</h1>
-</header>
+<body class="font-sans bg-[#f8f8f7] text-[#34322d]">
 
-<main>
-    <h2>Our Purpose</h2>
-    <p>
-        Jimothy Tracker was created to help the community better understand and appreciate 
-        Jimothy — a beloved local raccoon whose adventures have captured the hearts of many. 
-        By collecting sighting reports, we aim to build a clearer picture of his habitat, 
-        movement patterns, and living environment.
-    </p>
+  <!-- Header -->
+  <header class="flex flex-wrap items-center justify-between px-16 py-6 bg-gradient-to-b from-[#f8f8f7] to-[#f1f0ee] shadow-sm gap-4">
+    <div class="flex items-center gap-3">
+      <h1 class="text-2xl font-serif text-[#34322d]">🦝 About Jimothy Tracker</h1>
+    </div>
+    <nav class="flex items-center gap-8 text-sm font-medium text-[#34322d]">
+      <a href="/" class="hover:text-[#a64f3c]">Home</a>
+      <a href="/jimothy-sightings" class="hover:text-[#a64f3c]">Sightings</a>
+      <a href="/#sightingReportForm" class="hover:text-[#a64f3c]">Report A Sighting</a>
+    </nav>
+  </header>
 
-    <p>
-        This information can be valuable not only for curious neighbors, but also for 
-        wildlife researchers and official wildlife management teams who monitor urban 
-        raccoon populations and their interactions with human environments.
-    </p>
+<div class="bio-layout w-full px-4 md:px-12 lg:px-20 py-10">
 
-    <h2>Community Responsibility</h2>
-    <p>
-        Jimothy is a wild animal, not a mascot or a tourist attraction. The data shared on 
-        this site is intended for <strong>understanding</strong> his habitat — 
-        <em>not</em> for chasing, disturbing, or attempting to capture him.
-    </p>
+  <!-- Magazine-style wrapper -->
+  <div class="md:flex md:items-start md:gap-10">
 
-    <div class="warning-box">
-        <strong>Please do not use Jimothy Tracker for:</strong>
-        <ul>
-            <li>Hunting Jimothy</li>
-            <li>Chasing or harassing him</li>
-            <li>Attempting to lure him out</li>
-            <li>Stalking him across neighborhoods</li>
-        </ul>
-        <p>
-            Reports of sightings outside realistic ranges (e.g., “Jimothy spotted in Korea”) 
-            may be removed to keep the data accurate and prevent misuse.
-        </p>
+    <!-- Jimothy Image -->
+    <div class="flex justify-center md:block md:flex-shrink-0 mb-6 md:mb-0">
+      <img src="/images/jimothy-habitat.png"
+           alt="Jimothy the Raccoon exploring his habitat"
+           class="rounded-xl shadow-lg border border-[#d6d3ce]"
+           style="width:300px; height:300px; object-fit:cover;" />
     </div>
 
-    <h2>How You Can Help</h2>
-    <p>
-        If you spot Jimothy, feel free to submit a report — but please do so responsibly. 
-        Provide accurate location information, avoid exaggeration, and respect his space. 
-        Together, we can maintain a safe, informative, and fun community resource.
-    </p>
+    <!-- Main Content -->
+    <main class="text-[#34322d] md:flex-1">
+      <h2 class="text-3xl font-serif mb-4 text-center md:text-left">Why Jimothy Tracker Exists</h2>
 
-    <p>
-        Thank you for helping protect Jimothy and supporting ethical wildlife awareness.
-    </p>
+      <p class="text-lg leading-relaxed mb-6">
+        JimothyTracker.org was created to help the community better understand Jimothy’s natural
+        movement patterns, habitat preferences, and seasonal behavior. By collecting sightings,
+        we build a clearer picture of where Jimothy spends his time and how he interacts with
+        Seattle’s urban environment.
+      </p>
 
-    <p><a href="index.html">← Back to Home</a></p>
-</main>
+      <p class="text-lg leading-relaxed mb-6">
+        This information can be genuinely useful for wildlife researchers, urban ecology
+        students, and official wildlife management teams. Community‑driven data helps identify
+        raccoon travel corridors, food sources, and environmental pressures — all without
+        disturbing Jimothy or altering his behavior.
+      </p>
 
-<footer>
-    Jimothy Tracker • Community Wildlife Awareness Project
+      <h3 class="text-2xl font-serif mt-10 mb-4">Respecting Jimothy</h3>
+
+      <p class="text-lg leading-relaxed mb-6">
+        Jimothy is a wild animal. He is not a tourist attraction, mascot, or scavenger hunt
+        objective. The purpose of this tracker is <strong>understanding</strong> — not pursuit.
+      </p>
+
+      <div class="bg-[#fff7e1] border-l-4 border-[#d6a300] p-5 rounded-lg mb-8">
+        <p class="font-semibold mb-2">The tracking data must NOT be used for:</p>
+        <ul class="list-disc pl-6 space-y-1 text-lg">
+          <li>Hunting Jimothy</li>
+          <li>Chasing or attempting to approach him</li>
+          <li>Stalking him across neighborhoods</li>
+          <li>Trying to lure him out or interfere with his routine</li>
+          <li>Posting intentionally false sightings (e.g., “Jimothy spotted in Korea”)</li>
+        </ul>
+        <p class="mt-4 text-lg">
+          Reports that are clearly unrealistic or harmful may be removed to protect the integrity
+          of the data and Jimothy’s safety.
+        </p>
+      </div>
+
+      <h3 class="text-2xl font-serif mt-10 mb-4">How You Can Help</h3>
+
+      <p class="text-lg leading-relaxed mb-6">
+        If you spot Jimothy, feel free to submit a sighting — responsibly. Provide accurate
+        location details, avoid exaggeration, and always respect his space. Every honest report
+        helps build a better understanding of his habitat and supports ethical wildlife awareness.
+      </p>
+
+      <div class="text-center md:text-left mt-12">
+        <a href="/jimothy-sightings"
+           class="inline-block px-5 py-3 bg-amber-700 text-white rounded-full hover:bg-amber-800">
+          View Community Sightings
+        </a>
+        <a href="/" class="block mt-4 text-sm text-[#34322d] underline hover:text-[#a64f3c]">
+          Return to Jimothy Tracker Map
+        </a>
+      </div>
+    </main>
+
+  </div>
+</div>
+
+<footer class="text-sm text-gray-800 py-6 text-center">
+  © 2026 Emily Liu · JimothyTracker.org · All rights reserved. Unauthorized use prohibited. Violations may result in DMCA takedown.
 </footer>
 
 </body>
